@@ -32,13 +32,26 @@ namespace DocumentIndexer
             Console.ReadKey();
         }
 
-        private static IndexProcessor CreateDocumentProcessor(Settings settings)
+        private static IDocumentProcessor CreateDocumentProcessor(Settings settings)
+        {
+            return new CompositeDocumentProcessor(
+                CreateIndexProcessor(settings),
+                CreateDocumentTracker());
+        }
+
+        private static IndexProcessor CreateIndexProcessor(Settings settings)
         {
             return new IndexProcessor(
                 wordsExtractor:
                     new SimpleWordsExtractor(),
                 documentWithExtractedWordsStore:
                     CreateDocumentStore(settings));
+        }
+
+        private static PerformanceCounterBasedDocumentTracker CreateDocumentTracker()
+        {
+            return new PerformanceCounterBasedDocumentTracker(
+                new PerformanceCounter("CompositionExample2", "TotalNumberOfProcessedDocuments", readOnly:false));
         }
 
         private static IDocumentWithExtractedWordsStore CreateDocumentStore(Settings settings)
@@ -73,28 +86,45 @@ namespace DocumentIndexer
 
         private static void EnsurePerformanceCountersAreCreated()
         {
-            if (PerformanceCounterCategory.Exists("CompositionExample1"))
-                return;
+            if (!PerformanceCounterCategory.Exists("CompositionExample1"))
+            {
+                PerformanceCounterCategory.Create(
+                    "CompositionExample1",
+                    "Performance Counters for CompositionExample",
+                    PerformanceCounterCategoryType.SingleInstance,
+                    new CounterCreationDataCollection(new[]
+                    {
+                        new CounterCreationData
+                        {
+                            CounterName = "SaveToDatabaseTimeInMilliseconds",
+                            CounterHelp = "The amount of time it takes to save a document in milliseconds",
+                            CounterType = PerformanceCounterType.RawFraction
+                        },
+                        new CounterCreationData
+                        {
+                            CounterName = "SaveToDatabaseTimeInMillisecondsBase",
+                            CounterHelp = "Base counter for SaveToDatabaseTimeInMilliseconds",
+                            CounterType = PerformanceCounterType.RawBase
+                        }
+                    }));
+            }
 
-            PerformanceCounterCategory.Create(
-                "CompositionExample1",
-                "Performance Counters for CompositionExample",
-                PerformanceCounterCategoryType.SingleInstance,
-                new CounterCreationDataCollection(new[]
-                {
-                    new CounterCreationData
+            if (!PerformanceCounterCategory.Exists("CompositionExample2"))
+            {
+                PerformanceCounterCategory.Create(
+                    "CompositionExample2",
+                    "Performance Counters for CompositionExample",
+                    PerformanceCounterCategoryType.SingleInstance,
+                    new CounterCreationDataCollection(new[]
                     {
-                        CounterName = "SaveToDatabaseTimeInMilliseconds",
-                        CounterHelp = "The amount of time it takes to save a document in milliseconds",
-                        CounterType = PerformanceCounterType.RawFraction
-                    },
-                    new CounterCreationData
-                    {
-                        CounterName = "SaveToDatabaseTimeInMillisecondsBase",
-                        CounterHelp = "Base counter for SaveToDatabaseTimeInMilliseconds",
-                        CounterType = PerformanceCounterType.RawBase
-                    }
-                }));
+                        new CounterCreationData
+                        {
+                            CounterName = "TotalNumberOfProcessedDocuments",
+                            CounterHelp = "The total number of processed documents",
+                            CounterType = PerformanceCounterType.NumberOfItems64
+                        }
+                    }));
+            }
         }
     }
 }
