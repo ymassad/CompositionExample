@@ -55,9 +55,11 @@
     <Compile Include="Data\IndexEntry.cs" />
     <Compile Include="Data\DataContext.cs" />
     <Compile Include="Data\Document.cs" />
+    <Compile Include="Implementations\SimpleFileBasedPerformanceRecorder.cs" />
     <Compile Include="Implementations\FileSystemDocumentsSource.cs" />
     <Compile Include="Implementations\DataContextFactory.cs" />
     <Compile Include="Implementations\DocumentWithExtractedWordsStore.cs" />
+    <Compile Include="Implementations\PerformanceAwareDocumentWithExtractedWordsStore.cs" />
     <Compile Include="Implementations\ProcessedDocumentsAwareDocumentsSource.cs" />
     <Compile Include="Implementations\SimpleWordsExtractor.cs" />
     <Compile Include="Interfaces\IDataContextFactory.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="Interfaces\IDocumentsSource.cs" />
     <Compile Include="Interfaces\DTOs\InputDocument.cs" />
     <Compile Include="Interfaces\IDocumentWithExtractedWordsStore.cs" />
+    <Compile Include="Interfaces\IPerformanceRecorder.cs" />
     <Compile Include="Interfaces\IRunnable.cs" />
     <Compile Include="Interfaces\IWordsExtractor.cs" />
     <Compile Include="Program.cs" />

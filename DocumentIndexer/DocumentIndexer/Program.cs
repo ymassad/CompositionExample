@@ -35,8 +35,15 @@ namespace DocumentIndexer
                 wordsExtractor:
                     new SimpleWordsExtractor(),
                 documentWithExtractedWordsStore:
-                    new DocumentWithExtractedWordsStore(
-                        new DataContextFactory(settings.ConnectionString)));
+                    CreateDocumentStore(settings));
+        }
+
+        private static IDocumentWithExtractedWordsStore CreateDocumentStore(Settings settings)
+        {
+            return new PerformanceAwareDocumentWithExtractedWordsStore(
+                new DocumentWithExtractedWordsStore(
+                    new DataContextFactory(settings.ConnectionString)),
+                new SimpleFileBasedPerformanceRecorder(settings.PerformanceRecordingFile));
         }
 
         private static IDocumentsSource CreateDocumentSource(Settings settings)
