@@ -2,4 +2,5 @@
 <Settings>
   <ConnectionString>Server=MYPC\SQLEXPRESS;Database=DocumentIndexer;Trusted_Connection=True;</ConnectionString>
   <FolderPath>C:\Documents</FolderPath>
+  <MoveToPath>C:\DocumentsDestination</MoveToPath>
 </Settings>

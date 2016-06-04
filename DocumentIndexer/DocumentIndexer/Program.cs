@@ -32,11 +32,17 @@ namespace DocumentIndexer
             Console.ReadKey();
         }
 
+        private static IDocumentsSource CreateDocumentSource(Settings settings)
+        {
+            return new FileSystemDocumentsSource(settings.FolderPath);
+        }
+
         private static IDocumentProcessor CreateDocumentProcessor(Settings settings)
         {
             return new CompositeDocumentProcessor(
                 CreateIndexProcessor(settings),
-                CreateDocumentTracker());
+                CreateDocumentTracker(),
+                CreateDocumentMover(settings));
         }
 
         private static IndexProcessor CreateIndexProcessor(Settings settings)
@@ -54,6 +60,11 @@ namespace DocumentIndexer
                 new PerformanceCounter("CompositionExample2", "TotalNumberOfProcessedDocuments", readOnly:false));
         }
 
+        private static DocumentMover CreateDocumentMover(Settings settings)
+        {
+            return new DocumentMover(settings.FolderPath, settings.MoveToPath);
+        }
+
         private static IDocumentWithExtractedWordsStore CreateDocumentStore(Settings settings)
         {
             return new PerformanceAwareDocumentWithExtractedWordsStore(
@@ -67,14 +78,6 @@ namespace DocumentIndexer
             return new AveragePerformanceCounterBasedTimeRecorder(
                 new PerformanceCounter("CompositionExample1", "SaveToDatabaseTimeInMilliseconds", readOnly: false),
                 new PerformanceCounter("CompositionExample1", "SaveToDatabaseTimeInMillisecondsBase", readOnly: false));
-        }
-
-        private static IDocumentsSource CreateDocumentSource(Settings settings)
-        {
-            return
-                new ProcessedDocumentsAwareDocumentsSource(
-                    new FileSystemDocumentsSource(settings.FolderPath),
-                    new DataContextFactory(settings.ConnectionString));
         }
 
         private static Settings ReadSettingsFromConfigurationFile()
