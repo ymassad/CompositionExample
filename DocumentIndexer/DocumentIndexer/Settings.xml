@@ -2,5 +2,4 @@
 <Settings>
   <ConnectionString>Server=MYPC\SQLEXPRESS;Database=DocumentIndexer;Trusted_Connection=True;</ConnectionString>
   <FolderPath>C:\Documents</FolderPath>
-  <PerformanceRecordingFile>C:\Performance.txt</PerformanceRecordingFile>
 </Settings>

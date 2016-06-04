@@ -5,7 +5,5 @@ namespace DocumentIndexer.Configuration
         public string ConnectionString { get; set; }
 
         public string FolderPath { get; set; }
-
-        public string PerformanceRecordingFile { get; set; }
     }
 }

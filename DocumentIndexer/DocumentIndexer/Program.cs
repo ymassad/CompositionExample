@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ namespace DocumentIndexer
     {
         static void Main(string[] args)
         {
+            EnsurePerformanceCountersAreCreated();
+
             var settings = ReadSettingsFromConfigurationFile();
 
             var runnable =
@@ -43,7 +46,14 @@ namespace DocumentIndexer
             return new PerformanceAwareDocumentWithExtractedWordsStore(
                 new DocumentWithExtractedWordsStore(
                     new DataContextFactory(settings.ConnectionString)),
-                new SimpleFileBasedPerformanceRecorder(settings.PerformanceRecordingFile));
+                CreatePerformanceRecorder());
+        }
+
+        private static IPerformanceRecorder CreatePerformanceRecorder()
+        {
+            return new AveragePerformanceCounterBasedTimeRecorder(
+                new PerformanceCounter("CompositionExample1", "SaveToDatabaseTimeInMilliseconds", readOnly: false),
+                new PerformanceCounter("CompositionExample1", "SaveToDatabaseTimeInMillisecondsBase", readOnly: false));
         }
 
         private static IDocumentsSource CreateDocumentSource(Settings settings)
@@ -59,6 +69,32 @@ namespace DocumentIndexer
             XmlSerializer serializer = new XmlSerializer(typeof(Settings));
 
             return (Settings)serializer.Deserialize(new MemoryStream(File.ReadAllBytes("Settings.xml")));
+        }
+
+        private static void EnsurePerformanceCountersAreCreated()
+        {
+            if (PerformanceCounterCategory.Exists("CompositionExample1"))
+                return;
+
+            PerformanceCounterCategory.Create(
+                "CompositionExample1",
+                "Performance Counters for CompositionExample",
+                PerformanceCounterCategoryType.SingleInstance,
+                new CounterCreationDataCollection(new[]
+                {
+                    new CounterCreationData
+                    {
+                        CounterName = "SaveToDatabaseTimeInMilliseconds",
+                        CounterHelp = "The amount of time it takes to save a document in milliseconds",
+                        CounterType = PerformanceCounterType.RawFraction
+                    },
+                    new CounterCreationData
+                    {
+                        CounterName = "SaveToDatabaseTimeInMillisecondsBase",
+                        CounterHelp = "Base counter for SaveToDatabaseTimeInMilliseconds",
+                        CounterType = PerformanceCounterType.RawBase
+                    }
+                }));
         }
     }
 }
