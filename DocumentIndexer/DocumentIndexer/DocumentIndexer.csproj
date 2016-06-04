@@ -58,6 +58,7 @@
     <Compile Include="Implementations\FileSystemDocumentsSource.cs" />
     <Compile Include="Implementations\DataContextFactory.cs" />
     <Compile Include="Implementations\DocumentWithExtractedWordsStore.cs" />
+    <Compile Include="Implementations\ProcessedDocumentsAwareDocumentsSource.cs" />
     <Compile Include="Implementations\SimpleWordsExtractor.cs" />
     <Compile Include="Interfaces\IDataContextFactory.cs" />
     <Compile Include="Implementations\IndexProcessor.cs" />

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DocumentIndexer.Configuration;
 using DocumentIndexer.Implementations;
+using DocumentIndexer.Interfaces;
 
 namespace DocumentIndexer
 {
@@ -38,9 +39,12 @@ namespace DocumentIndexer
                         new DataContextFactory(settings.ConnectionString)));
         }
 
-        private static FileSystemDocumentsSource CreateDocumentSource(Settings settings)
+        private static IDocumentsSource CreateDocumentSource(Settings settings)
         {
-            return new FileSystemDocumentsSource(settings.FolderPath);
+            return
+                new ProcessedDocumentsAwareDocumentsSource(
+                    new FileSystemDocumentsSource(settings.FolderPath),
+                    new DataContextFactory(settings.ConnectionString));
         }
 
         private static Settings ReadSettingsFromConfigurationFile()
