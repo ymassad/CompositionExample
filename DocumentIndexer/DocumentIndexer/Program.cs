@@ -67,10 +67,19 @@ namespace DocumentIndexer
 
         private static IDocumentWithExtractedWordsStore CreateDocumentStore(Settings settings)
         {
-            return new PerformanceAwareDocumentWithExtractedWordsStore(
-                new DocumentWithExtractedWordsStore(
-                    new DataContextFactory(settings.ConnectionString)),
-                CreatePerformanceRecorder());
+            return
+                new RetryAwareDocumentWithExtractedWordsStore(
+                    new PerformanceAwareDocumentWithExtractedWordsStore(
+                        CreateRealDatabaseDocumentStore(settings),
+                        CreatePerformanceRecorder()),
+                    new IncrementalTimeRetryWaiter(baseWaitTime: TimeSpan.FromSeconds(5)),
+                    maximumRetries: 5);
+        }
+
+        private static IDocumentWithExtractedWordsStore CreateRealDatabaseDocumentStore(Settings settings)
+        {
+            return new DocumentWithExtractedWordsStore(
+                new DataContextFactory(settings.ConnectionString));
         }
 
         private static IPerformanceRecorder CreatePerformanceRecorder()
