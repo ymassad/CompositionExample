@@ -56,6 +56,8 @@
     <Compile Include="Data\DataContext.cs" />
     <Compile Include="Data\Document.cs" />
     <Compile Include="Implementations\AveragePerformanceCounterBasedTimeRecorder.cs" />
+    <Compile Include="Implementations\EventLogBasedErrorReporter.cs" />
+    <Compile Include="Implementations\ErrorAwareDocumentWithExtractedWordsStore.cs" />
     <Compile Include="Implementations\RetryAwareDocumentWithExtractedWordsStore.cs" />
     <Compile Include="Implementations\IncrementalTimeRetryWaiter.cs" />
     <Compile Include="Implementations\DocumentMover.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Interfaces\IDocumentsSource.cs" />
     <Compile Include="Interfaces\DTOs\InputDocument.cs" />
     <Compile Include="Interfaces\IDocumentWithExtractedWordsStore.cs" />
+    <Compile Include="Interfaces\IErrorReporter.cs" />
     <Compile Include="Interfaces\IRetryWaiter.cs" />
     <Compile Include="Interfaces\IPerformanceRecorder.cs" />
     <Compile Include="Interfaces\IRunnable.cs" />

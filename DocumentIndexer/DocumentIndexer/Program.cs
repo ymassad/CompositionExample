@@ -69,12 +69,27 @@ namespace DocumentIndexer
         {
             return
                 new RetryAwareDocumentWithExtractedWordsStore(
-                    new PerformanceAwareDocumentWithExtractedWordsStore(
-                        CreateRealDatabaseDocumentStore(settings),
-                        CreatePerformanceRecorder()),
-                    new IncrementalTimeRetryWaiter(baseWaitTime: TimeSpan.FromSeconds(5)),
+                    new ErrorAwareDocumentWithExtractedWordsStore( 
+                        new PerformanceAwareDocumentWithExtractedWordsStore(
+                            CreateRealDatabaseDocumentStore(settings),
+                            CreatePerformanceRecorder()),
+                        CreateErrorReporter()),
+                    CreateRetryWaiter(),
                     maximumRetries: 5);
         }
+
+        private static IErrorReporter CreateErrorReporter()
+        {
+            return new EventLogBasedErrorReporter(
+                new EventLog("Application", ".", "DocumentIndexer"));
+        }
+
+        private static IncrementalTimeRetryWaiter CreateRetryWaiter()
+        {
+            return new IncrementalTimeRetryWaiter(baseWaitTime: TimeSpan.FromSeconds(5));
+        }
+
+
 
         private static IDocumentWithExtractedWordsStore CreateRealDatabaseDocumentStore(Settings settings)
         {
