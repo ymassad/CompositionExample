@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DocumentIndexer.Configuration;
@@ -25,11 +26,21 @@ namespace DocumentIndexer
                     documentsSource: CreateDocumentSource(settings),
                     documentProcessor: CreateDocumentProcessor(settings));
 
-            runnable.Run();
+            var continuousRunnable = new ContinuousRunnable(runnable, waitTimeBetweenRuns: TimeSpan.FromSeconds(5));
 
-            Console.WriteLine("Done. Press any key to exit");
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+
+            Task task = Task.Run(() => continuousRunnable.Run(cancellationTokenSource.Token));
+
+            Console.WriteLine("System running. Press any key to exit...");
 
             Console.ReadKey();
+
+            cancellationTokenSource.Cancel();
+
+            Console.WriteLine("Waiting for task to finish...");
+
+            task.Wait();
         }
 
         private static IDocumentsSource CreateDocumentSource(Settings settings)
