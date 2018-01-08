@@ -21,11 +21,9 @@ namespace DocumentIndexer.Implementations
             return
                 Directory.GetFiles(path)
                     .Select(file =>
-                        new InputDocument
-                        {
-                            DocumentName = Path.GetFileName(file),
-                            DocumentContent = File.ReadAllText(file)
-                        })
+                        new InputDocument(
+                            documentName: Path.GetFileName(file),
+                            documentContent: File.ReadAllText(file)))
                     .ToArray();
         }
     }

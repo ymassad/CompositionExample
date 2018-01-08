@@ -26,11 +26,9 @@ namespace DocumentIndexer.Implementations
             string[] words = wordsExtractor.GetWords(inputDocument.DocumentContent);
 
             documentWithExtractedWordsStore.Store(
-                new InputDocumentWithExtractedWords
-                {
-                    InputDocument = inputDocument,
-                    ExtractedWords = words
-                });
+                new InputDocumentWithExtractedWords(
+                    inputDocument,
+                    words));
         }
     }
 }

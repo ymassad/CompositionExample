@@ -2,8 +2,14 @@
 {
     public class InputDocument
     {
-        public string DocumentName { get; set; }
+        public string DocumentName { get; }
 
-        public string DocumentContent { get; set; }
+        public string DocumentContent { get;  }
+
+        public InputDocument(string documentName, string documentContent)
+        {
+            DocumentName = documentName;
+            DocumentContent = documentContent;
+        }
     }
 }
