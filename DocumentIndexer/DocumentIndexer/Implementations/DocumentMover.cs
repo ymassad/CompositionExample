@@ -13,13 +13,16 @@ namespace DocumentIndexer.Implementations
     {
         private readonly string path;
         private readonly string destinationPath;
+        private readonly IFileSystem fileSystem;
 
         public DocumentMover(
             string path,
-            string destinationPath)
+            string destinationPath,
+            IFileSystem fileSystem)
         {
             this.path = path;
             this.destinationPath = destinationPath;
+            this.fileSystem = fileSystem;
         }
 
         public void Process(InputDocument inputDocument)
@@ -28,7 +31,7 @@ namespace DocumentIndexer.Implementations
 
             string destinationFullFilePath = Path.Combine(destinationPath, inputDocument.DocumentName);
 
-            File.Move(currentFullFilePath, destinationFullFilePath);
+            fileSystem.MoveFile(currentFullFilePath, destinationFullFilePath);
         }
     }
 }

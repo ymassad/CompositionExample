@@ -45,7 +45,7 @@ namespace DocumentIndexer
 
         private static IDocumentsSource CreateDocumentSource(Settings settings)
         {
-            return new FileSystemDocumentsSource(settings.FolderPath);
+            return new FileSystemDocumentsSource(settings.FolderPath, new FileSystem());
         }
 
         private static IDocumentProcessor CreateDocumentProcessor(Settings settings)
@@ -68,12 +68,13 @@ namespace DocumentIndexer
         private static PerformanceCounterBasedDocumentTracker CreateDocumentTracker()
         {
             return new PerformanceCounterBasedDocumentTracker(
-                new PerformanceCounter("CompositionExample2", "TotalNumberOfProcessedDocuments", readOnly:false));
+                new PerformanceCounterWrapper(
+                    new PerformanceCounter("CompositionExample2", "TotalNumberOfProcessedDocuments", readOnly:false)));
         }
 
         private static DocumentMover CreateDocumentMover(Settings settings)
         {
-            return new DocumentMover(settings.FolderPath, settings.MoveToPath);
+            return new DocumentMover(settings.FolderPath, settings.MoveToPath, new FileSystem());
         }
 
         private static IDocumentWithExtractedWordsStore CreateDocumentStore(Settings settings)
@@ -92,7 +93,8 @@ namespace DocumentIndexer
         private static IErrorReporter CreateErrorReporter()
         {
             return new EventLogBasedErrorReporter(
-                new EventLog("Application", ".", "DocumentIndexer"));
+                new EventLogWrapper(
+                    new EventLog("Application", ".", "DocumentIndexer")));
         }
 
         private static IncrementalTimeRetryWaiter CreateRetryWaiter()
@@ -111,8 +113,10 @@ namespace DocumentIndexer
         private static IPerformanceRecorder CreatePerformanceRecorder()
         {
             return new AveragePerformanceCounterBasedTimeRecorder(
-                new PerformanceCounter("CompositionExample1", "SaveToDatabaseTimeInMilliseconds", readOnly: false),
-                new PerformanceCounter("CompositionExample1", "SaveToDatabaseTimeInMillisecondsBase", readOnly: false));
+                new PerformanceCounterWrapper(
+                    new PerformanceCounter("CompositionExample1", "SaveToDatabaseTimeInMilliseconds", readOnly: false)),
+                new PerformanceCounterWrapper(
+                    new PerformanceCounter("CompositionExample1", "SaveToDatabaseTimeInMillisecondsBase", readOnly: false)));
         }
 
         private static Settings ReadSettingsFromConfigurationFile()

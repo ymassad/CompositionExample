@@ -18,12 +18,12 @@ namespace DocumentIndexer.Implementations
     //The reason why is beyond the scope of this example
     public class AveragePerformanceCounterBasedTimeRecorder : IPerformanceRecorder
     {
-        private readonly PerformanceCounter rawFractionPerformanceCounter;
-        private readonly PerformanceCounter rawBasePerformanceCounter;
+        private readonly IPerformanceCounter rawFractionPerformanceCounter;
+        private readonly IPerformanceCounter rawBasePerformanceCounter;
 
         public AveragePerformanceCounterBasedTimeRecorder(
-            PerformanceCounter rawFractionPerformanceCounter,
-            PerformanceCounter rawBasePerformanceCounter)
+            IPerformanceCounter rawFractionPerformanceCounter,
+            IPerformanceCounter rawBasePerformanceCounter)
         {
             this.rawFractionPerformanceCounter = rawFractionPerformanceCounter;
             this.rawBasePerformanceCounter = rawBasePerformanceCounter;

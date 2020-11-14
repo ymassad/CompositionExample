@@ -59,6 +59,9 @@
     <Compile Include="Implementations\ContinuousRunnable.cs" />
     <Compile Include="Implementations\EventLogBasedErrorReporter.cs" />
     <Compile Include="Implementations\ErrorAwareDocumentWithExtractedWordsStore.cs" />
+    <Compile Include="Implementations\EventLogWrapper.cs" />
+    <Compile Include="Implementations\FileSystem.cs" />
+    <Compile Include="Implementations\PerformanceCounterWrapper.cs" />
     <Compile Include="Implementations\RetryAwareDocumentWithExtractedWordsStore.cs" />
     <Compile Include="Implementations\IncrementalTimeRetryWaiter.cs" />
     <Compile Include="Implementations\DocumentMover.cs" />
@@ -81,6 +84,9 @@
     <Compile Include="Interfaces\IDocumentWithExtractedWordsStore.cs" />
     <Compile Include="Interfaces\IErrorReporter.cs" />
     <Compile Include="Interfaces\ICancellableRunnable.cs" />
+    <Compile Include="Interfaces\IEventLog.cs" />
+    <Compile Include="Interfaces\IFileSystem.cs" />
+    <Compile Include="Interfaces\IPerformanceCounter.cs" />
     <Compile Include="Interfaces\IRetryWaiter.cs" />
     <Compile Include="Interfaces\IPerformanceRecorder.cs" />
     <Compile Include="Interfaces\IRunnable.cs" />

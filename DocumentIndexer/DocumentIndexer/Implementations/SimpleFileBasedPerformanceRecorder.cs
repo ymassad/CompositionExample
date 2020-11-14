@@ -11,15 +11,17 @@ namespace DocumentIndexer.Implementations
     public class SimpleFileBasedPerformanceRecorder : IPerformanceRecorder
     {
         private readonly string file;
+        private readonly IFileSystem fileSystem;
 
-        public SimpleFileBasedPerformanceRecorder(string file)
+        public SimpleFileBasedPerformanceRecorder(string file, IFileSystem fileSystem)
         {
             this.file = file;
+            this.fileSystem = fileSystem;
         }
 
         public void RecordInstance(TimeSpan elapsed)
         {
-            File.AppendAllText(file, elapsed.TotalMilliseconds + "ms" + Environment.NewLine);
+            fileSystem.AppendAllText(file, elapsed.TotalMilliseconds + "ms" + Environment.NewLine);
         }
     }
 }

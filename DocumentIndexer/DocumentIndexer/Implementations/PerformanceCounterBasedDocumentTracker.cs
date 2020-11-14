@@ -11,9 +11,9 @@ namespace DocumentIndexer.Implementations
 {
     public class PerformanceCounterBasedDocumentTracker : IDocumentProcessor
     {
-        private readonly PerformanceCounter performanceCounter;
+        private readonly IPerformanceCounter performanceCounter;
 
-        public PerformanceCounterBasedDocumentTracker(PerformanceCounter performanceCounter)
+        public PerformanceCounterBasedDocumentTracker(IPerformanceCounter performanceCounter)
         {
             this.performanceCounter = performanceCounter;
         }

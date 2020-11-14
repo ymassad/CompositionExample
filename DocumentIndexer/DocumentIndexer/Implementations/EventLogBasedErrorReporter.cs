@@ -10,9 +10,9 @@ namespace DocumentIndexer.Implementations
 {
     public class EventLogBasedErrorReporter : IErrorReporter
     {
-        private readonly EventLog eventLog;
+        private readonly IEventLog eventLog;
 
-        public EventLogBasedErrorReporter(EventLog eventLog)
+        public EventLogBasedErrorReporter(IEventLog eventLog)
         {
             this.eventLog = eventLog;
         }
