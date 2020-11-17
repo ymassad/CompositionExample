@@ -5,42 +5,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using DIVEX.Core;
 using DocumentIndexer.Configuration;
 using DocumentIndexer.Implementations;
-
+using DocumentIndexer.Interfaces;
+using static DIVEX.Core.DivexUtils;
 namespace DocumentIndexer
 {
-    class Program
+    [DivexCompose]
+    public partial class Program
     {
         static void Main(string[] args)
         {
             var settings = ReadSettingsFromConfigurationFile();
 
+            var create =
+                 CtorOf<DocumentGrabberAndProcessor>()
+                    .Replace(documentsSource: CtorOf<FileSystemDocumentsSource>()
+                        .Rename(path_documentsSourcePath :0))
+                    .Replace(documentProcessor: CtorOf<IndexProcessor>())
+                    .Replace(wordsExtractor: CtorOf<SimpleWordsExtractor>())
+                    .Replace(documentWithExtractedWordsStore: CtorOf<DocumentWithExtractedWordsStore>());
+
             var runnable =
-                new DocumentGrabberAndProcessor(
-                    documentsSource: CreateDocumentSource(settings),
-                    documentProcessor: CreateDocumentProcessor(settings));
+                create.Invoke(
+                    documentsSourcePath: settings.FolderPath,
+                    dataContextIsolationFactory: new DataContextFactory(settings.ConnectionString));
 
             runnable.Run();
 
             Console.WriteLine("Done. Press any key to exit");
 
             Console.ReadKey();
-        }
-
-        private static IndexProcessor CreateDocumentProcessor(Settings settings)
-        {
-            return new IndexProcessor(
-                wordsExtractor:
-                    new SimpleWordsExtractor(),
-                documentWithExtractedWordsStore:
-                    new DocumentWithExtractedWordsStore(
-                        new DataContextFactory(settings.ConnectionString)));
-        }
-
-        private static FileSystemDocumentsSource CreateDocumentSource(Settings settings)
-        {
-            return new FileSystemDocumentsSource(settings.FolderPath);
         }
 
         private static Settings ReadSettingsFromConfigurationFile()

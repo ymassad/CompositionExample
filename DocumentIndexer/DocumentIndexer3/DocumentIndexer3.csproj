@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{412C3782-4390-437D-9851-13068FAB2B68}</ProjectGuid>
+    <ProjectGuid>{E3234188-F9E7-4035-8AA0-E7957C7497B7}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DocumentIndexer</RootNamespace>
@@ -58,9 +58,12 @@
     <Compile Include="Data\IndexEntry.cs" />
     <Compile Include="Data\DataContext.cs" />
     <Compile Include="Data\Document.cs" />
+    <Compile Include="Implementations\CompositeRunnable.cs" />
+    <Compile Include="Implementations\FileSystemBasedDocumentWithExtractedWordsStore.cs" />
     <Compile Include="Implementations\FileSystemDocumentsSource.cs" />
     <Compile Include="Implementations\DataContextFactory.cs" />
     <Compile Include="Implementations\DocumentWithExtractedWordsStore.cs" />
+    <Compile Include="Implementations\RestBasedWordsExtractor.cs" />
     <Compile Include="Implementations\SimpleWordsExtractor.cs" />
     <Compile Include="Interfaces\IDataContextFactory.cs" />
     <Compile Include="Implementations\IndexProcessor.cs" />
