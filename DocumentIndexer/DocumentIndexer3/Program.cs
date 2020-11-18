@@ -19,13 +19,15 @@ namespace DocumentIndexer
         {
             var settings = ReadSettingsFromConfigurationFile();
 
+            var createDocumentGrabber = CreateDocumentGrabberAndProcessor();
+
             var create1 =
-                CreateDocumentGrabber()
+                createDocumentGrabber
                     .Replace(wordsExtractor: CtorOf<SimpleWordsExtractor>())
                     .Replace(documentWithExtractedWordsStore: CtorOf<DocumentWithExtractedWordsStore>());
 
             var create2 =
-                CreateDocumentGrabber()
+                createDocumentGrabber
                     .Replace(wordsExtractor: CtorOf<RestBasedWordsExtractor>()
                                                  .Rename(url_extractorServiceUrl :0))
                     .Replace(documentWithExtractedWordsStore:
@@ -52,7 +54,7 @@ namespace DocumentIndexer
             Console.ReadKey();
         }
 
-        private static VarReturn.VR1 CreateDocumentGrabber()
+        private static VarReturn.VR1 CreateDocumentGrabberAndProcessor()
         {
             return CtorOf<DocumentGrabberAndProcessor>()
                 .Replace(documentsSource: CtorOf<FileSystemDocumentsSource>()
