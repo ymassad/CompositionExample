@@ -460,6 +460,44 @@ namespace DocumentIndexer
 namespace DocumentIndexer
 {
     
+    public static class OptimizeExtensionMethods1
+    {
+    
+        public static DocumentIndexer.OptimizeExtensionMethods1.OptimizeClass Optimize(this global::DocumentIndexer.ReplaceLastExtensionMethods1.ReplaceLastClass function)
+        {
+            return new OptimizeClass(function);
+        }
+        public sealed class OptimizeClass
+        {
+        
+            public OptimizeClass(global::DocumentIndexer.ReplaceLastExtensionMethods1.ReplaceLastClass function)
+            {
+            
+            }
+            [DIVEX.Core.InvokeIndexAttribute(0)]
+            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextIsolationFactory, global::System.String documentsSourcePathForProcessor2, global::System.String extractorServiceUrl, global::System.String outputFolderPath)
+            {
+                var documentWithExtractedWordsStore = new global::DocumentIndexer.Implementations.FileSystemBasedDocumentWithExtractedWordsStore(outputFolderPath: outputFolderPath);
+                var wordsExtractor = new global::DocumentIndexer.Implementations.RestBasedWordsExtractor(url: extractorServiceUrl);
+                var documentProcessor = new global::DocumentIndexer.Implementations.IndexProcessor(wordsExtractor: wordsExtractor, documentWithExtractedWordsStore: documentWithExtractedWordsStore);
+                var documentsSource = new global::DocumentIndexer.Implementations.FileSystemDocumentsSource(path: documentsSourcePathForProcessor2);
+                var runnables = new global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor(documentsSource: documentsSource, documentProcessor: documentProcessor);
+                var documentWithExtractedWordsStore1 = new global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore(dataContextIsolationFactory: dataContextIsolationFactory);
+                var wordsExtractor1 = new global::DocumentIndexer.Implementations.SimpleWordsExtractor();
+                var documentProcessor1 = new global::DocumentIndexer.Implementations.IndexProcessor(wordsExtractor: wordsExtractor1, documentWithExtractedWordsStore: documentWithExtractedWordsStore1);
+                var documentsSource1 = new global::DocumentIndexer.Implementations.FileSystemDocumentsSource(path: documentsSourcePathForProcessor1);
+                var runnables1 = new global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor(documentsSource: documentsSource1, documentProcessor: documentProcessor1);
+                return new global::DocumentIndexer.Implementations.CompositeRunnable(runnables: global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Concat(new global::DocumentIndexer.Interfaces.IRunnable [] {runnables1}, new global::DocumentIndexer.Interfaces.IRunnable[]{runnables})));
+            }
+        
+        }
+    
+    }
+}
+
+namespace DocumentIndexer
+{
+    
     public static class ReplaceOneExtensionMethods1
     {
     

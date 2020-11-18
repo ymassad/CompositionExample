@@ -39,8 +39,10 @@ namespace DocumentIndexer
                 .ReplaceOne(runnables: create1)
                 .ReplaceLast(runnables: create2);
 
+            var create4 = create3.Optimize();
+
             var runnable =
-                create3.Invoke(
+                create4.Invoke(
                     documentsSourcePathForProcessor1:settings.FolderPath,
                     documentsSourcePathForProcessor2: settings.FolderPath2,
                     dataContextIsolationFactory: new DataContextFactory(settings.ConnectionString),
