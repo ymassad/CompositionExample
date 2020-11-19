@@ -14,5 +14,15 @@ namespace DocumentIndexer.Implementations
         {
             return File.ReadAllText(filePath);
         }
+
+        public bool FileExists(string filePath)
+        {
+            return File.Exists(filePath);
+        }
+
+        public Stream OpenFileForWrite(string filePath)
+        {
+            return File.OpenWrite(filePath);
+        }
     }
 }

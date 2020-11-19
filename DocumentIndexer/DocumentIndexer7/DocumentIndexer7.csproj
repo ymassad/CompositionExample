@@ -65,6 +65,7 @@
     <Compile Include="Implementations\DataContextFactory.cs" />
     <Compile Include="Implementations\DocumentWithExtractedWordsStore.cs" />
     <Compile Include="Implementations\RestBasedWordsExtractor.cs" />
+    <Compile Include="Implementations\RestClient.cs" />
     <Compile Include="Implementations\SimpleWordsExtractor.cs" />
     <Compile Include="Interfaces\IDataContextFactory.cs" />
     <Compile Include="Implementations\IndexProcessor.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Interfaces\DTOs\InputDocument.cs" />
     <Compile Include="Interfaces\IDocumentWithExtractedWordsStore.cs" />
     <Compile Include="Interfaces\IFileSystem.cs" />
+    <Compile Include="Interfaces\IRestClient.cs" />
     <Compile Include="Interfaces\IRunnable.cs" />
     <Compile Include="Interfaces\IWordsExtractor.cs" />
     <Compile Include="Program.cs" />

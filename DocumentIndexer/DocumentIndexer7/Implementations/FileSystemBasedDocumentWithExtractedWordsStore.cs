@@ -8,10 +8,12 @@ namespace DocumentIndexer.Implementations
     public class FileSystemBasedDocumentWithExtractedWordsStore : IDocumentWithExtractedWordsStore
     {
         private readonly string outputFolderPath;
+        private readonly IFileSystem fileSystem;
 
-        public FileSystemBasedDocumentWithExtractedWordsStore(string outputFolderPath)
+        public FileSystemBasedDocumentWithExtractedWordsStore(string outputFolderPath, IFileSystem fileSystem)
         {
             this.outputFolderPath = outputFolderPath;
+            this.fileSystem = fileSystem;
         }
 
         public void Store(InputDocumentWithExtractedWords inputDocumentWithExtractedWords)
@@ -23,7 +25,7 @@ namespace DocumentIndexer.Implementations
 
             int index = 1;
 
-            while(File.Exists(filePath))
+            while(fileSystem.FileExists(filePath))
             {
                 filePath = baseFilePath + index;
                 index++;
@@ -31,7 +33,7 @@ namespace DocumentIndexer.Implementations
 
             var serializer = new XmlSerializer(typeof(InputDocumentWithExtractedWords));
 
-            using (var fs = File.OpenWrite(filePath))
+            using (var fs = fileSystem.OpenFileForWrite(filePath))
             {
                 serializer.Serialize(fs, inputDocumentWithExtractedWords);
             }

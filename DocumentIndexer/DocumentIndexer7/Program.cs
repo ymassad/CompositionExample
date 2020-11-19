@@ -46,7 +46,8 @@ namespace DocumentIndexer
                     dataContextIsolationFactory: new DataContextFactory(settings.ConnectionString),
                     extractorServiceUrl: "http://localhost",
                     outputFolderPath: settings.OutputFolderPath,
-                    fileSystem: new FileSystem());
+                    fileSystem: new FileSystem(),
+                    restClient: new RestClient());
 
             runnable.Run();
 
