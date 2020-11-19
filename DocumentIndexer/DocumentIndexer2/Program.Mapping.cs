@@ -183,9 +183,9 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePath, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextIsolationFactory)
+            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePath, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory)
             {
-                return this.f1.Invoke(documentsSourcePath, this.f2.Invoke(dataContextIsolationFactory));
+                return this.f1.Invoke(documentsSourcePath, this.f2.Invoke(dataContextFactory));
             }
         
         }
@@ -199,9 +199,9 @@ namespace DocumentIndexer
             }
             [DIVEX.Core.InvokeIndexAttribute(0)]
             [DIVEX.Core.OriginalConstructorAttribute("DocumentIndexer.Interfaces.IDataContextFactory")]
-            public global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore Invoke(global::DocumentIndexer.Interfaces.IDataContextFactory dataContextIsolationFactory)
+            public global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore Invoke(global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory)
             {
-                return new global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore(dataContextIsolationFactory);
+                return new global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore(dataContextFactory);
             }
         
         }

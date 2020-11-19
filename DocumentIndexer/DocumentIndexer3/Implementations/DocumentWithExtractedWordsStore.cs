@@ -11,16 +11,16 @@ namespace DocumentIndexer.Implementations
 {
     public class DocumentWithExtractedWordsStore : IDocumentWithExtractedWordsStore
     {
-        private readonly IDataContextFactory dataContextIsolationFactory;
+        private readonly IDataContextFactory dataContextFactory;
 
-        public DocumentWithExtractedWordsStore(IDataContextFactory dataContextIsolationFactory)
+        public DocumentWithExtractedWordsStore(IDataContextFactory dataContextFactory)
         {
-            this.dataContextIsolationFactory = dataContextIsolationFactory;
+            this.dataContextFactory = dataContextFactory;
         }
 
         public void Store(InputDocumentWithExtractedWords inputDocumentWithExtractedWords)
         {
-            using (var context = dataContextIsolationFactory.Create())
+            using (var context = dataContextFactory.Create())
             {
                 var inputDocument = inputDocumentWithExtractedWords.InputDocument;
 

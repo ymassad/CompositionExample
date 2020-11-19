@@ -219,9 +219,9 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextIsolationFactory)
+            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory)
             {
-                return this.f1.Invoke(documentsSourcePathForProcessor1, this.f2.Invoke(dataContextIsolationFactory));
+                return this.f1.Invoke(documentsSourcePathForProcessor1, this.f2.Invoke(dataContextFactory));
             }
         
         }
@@ -235,9 +235,9 @@ namespace DocumentIndexer
             }
             [DIVEX.Core.InvokeIndexAttribute(0)]
             [DIVEX.Core.OriginalConstructorAttribute("DocumentIndexer.Interfaces.IDataContextFactory")]
-            public global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore Invoke(global::DocumentIndexer.Interfaces.IDataContextFactory dataContextIsolationFactory)
+            public global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore Invoke(global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory)
             {
-                return new global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore(dataContextIsolationFactory);
+                return new global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore(dataContextFactory);
             }
         
         }
@@ -483,9 +483,9 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(0)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextIsolationFactory, global::DocumentIndexer.Interfaces.IRunnable[] runnables)
+            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, global::DocumentIndexer.Interfaces.IRunnable[] runnables)
             {
-                return this.f1.Invoke(global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Concat(new global::DocumentIndexer.Interfaces.IRunnable [] {this.f2.Invoke(documentsSourcePathForProcessor1, dataContextIsolationFactory)}, runnables)));
+                return this.f1.Invoke(global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Concat(new global::DocumentIndexer.Interfaces.IRunnable [] {this.f2.Invoke(documentsSourcePathForProcessor1, dataContextFactory)}, runnables)));
             }
         
         }
@@ -535,9 +535,9 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(2)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextIsolationFactory, global::System.String documentsSourcePathForProcessor2, global::System.String extractorServiceUrl, global::System.String outputFolderPath)
+            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, global::System.String documentsSourcePathForProcessor2, global::System.String extractorServiceUrl, global::System.String outputFolderPath)
             {
-                return this.f1.Invoke(documentsSourcePathForProcessor1, dataContextIsolationFactory, new global::DocumentIndexer.Interfaces.IRunnable[]{this.f2.Invoke(documentsSourcePathForProcessor2, extractorServiceUrl, outputFolderPath)});
+                return this.f1.Invoke(documentsSourcePathForProcessor1, dataContextFactory, new global::DocumentIndexer.Interfaces.IRunnable[]{this.f2.Invoke(documentsSourcePathForProcessor2, extractorServiceUrl, outputFolderPath)});
             }
         
         }

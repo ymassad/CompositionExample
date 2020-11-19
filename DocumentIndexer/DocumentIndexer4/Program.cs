@@ -43,7 +43,7 @@ namespace DocumentIndexer
                 create3.Invoke(
                     documentsSourcePathForProcessor1:settings.FolderPath,
                     documentsSourcePathForProcessor2: settings.FolderPath2,
-                    dataContextIsolationFactory: new DataContextFactory(settings.ConnectionString),
+                    dataContextFactory: new DataContextFactory(settings.ConnectionString),
                     extractorServiceUrl: "http://localhost",
                     outputFolderPath: settings.OutputFolderPath);
 

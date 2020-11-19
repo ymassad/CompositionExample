@@ -43,7 +43,7 @@ namespace DocumentIndexer
             var runnable =
                 create4.Invoke(
                     documentsSourcePath: settings.FolderPath,
-                    dataContextIsolationFactory: new DataContextFactory(settings.ConnectionString),
+                    dataContextFactory: new DataContextFactory(settings.ConnectionString),
                     extractorServiceUrl: "http://localhost",
                     outputFolderPath: settings.OutputFolderPath,
                     fileSystem: new FileSystem(),

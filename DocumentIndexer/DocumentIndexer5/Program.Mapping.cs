@@ -219,9 +219,9 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextIsolationFactory)
+            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory)
             {
-                return this.f1.Invoke(documentsSourcePathForProcessor1, this.f2.Invoke(dataContextIsolationFactory));
+                return this.f1.Invoke(documentsSourcePathForProcessor1, this.f2.Invoke(dataContextFactory));
             }
         
         }
@@ -235,9 +235,9 @@ namespace DocumentIndexer
             }
             [DIVEX.Core.InvokeIndexAttribute(0)]
             [DIVEX.Core.OriginalConstructorAttribute("DocumentIndexer.Interfaces.IDataContextFactory")]
-            public global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore Invoke(global::DocumentIndexer.Interfaces.IDataContextFactory dataContextIsolationFactory)
+            public global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore Invoke(global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory)
             {
-                return new global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore(dataContextIsolationFactory);
+                return new global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore(dataContextFactory);
             }
         
         }
@@ -475,14 +475,14 @@ namespace DocumentIndexer
             
             }
             [DIVEX.Core.InvokeIndexAttribute(0)]
-            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextIsolationFactory, global::System.String documentsSourcePathForProcessor2, global::System.String extractorServiceUrl, global::System.String outputFolderPath)
+            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, global::System.String documentsSourcePathForProcessor2, global::System.String extractorServiceUrl, global::System.String outputFolderPath)
             {
                 var documentWithExtractedWordsStore = new global::DocumentIndexer.Implementations.FileSystemBasedDocumentWithExtractedWordsStore(outputFolderPath: outputFolderPath);
                 var wordsExtractor = new global::DocumentIndexer.Implementations.RestBasedWordsExtractor(url: extractorServiceUrl);
                 var documentProcessor = new global::DocumentIndexer.Implementations.IndexProcessor(wordsExtractor: wordsExtractor, documentWithExtractedWordsStore: documentWithExtractedWordsStore);
                 var documentsSource = new global::DocumentIndexer.Implementations.FileSystemDocumentsSource(path: documentsSourcePathForProcessor2);
                 var runnables = new global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor(documentsSource: documentsSource, documentProcessor: documentProcessor);
-                var documentWithExtractedWordsStore1 = new global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore(dataContextIsolationFactory: dataContextIsolationFactory);
+                var documentWithExtractedWordsStore1 = new global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore(dataContextFactory: dataContextFactory);
                 var wordsExtractor1 = new global::DocumentIndexer.Implementations.SimpleWordsExtractor();
                 var documentProcessor1 = new global::DocumentIndexer.Implementations.IndexProcessor(wordsExtractor: wordsExtractor1, documentWithExtractedWordsStore: documentWithExtractedWordsStore1);
                 var documentsSource1 = new global::DocumentIndexer.Implementations.FileSystemDocumentsSource(path: documentsSourcePathForProcessor1);
@@ -521,9 +521,9 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(0)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextIsolationFactory, global::DocumentIndexer.Interfaces.IRunnable[] runnables)
+            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, global::DocumentIndexer.Interfaces.IRunnable[] runnables)
             {
-                return this.f1.Invoke(global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Concat(new global::DocumentIndexer.Interfaces.IRunnable [] {this.f2.Invoke(documentsSourcePathForProcessor1, dataContextIsolationFactory)}, runnables)));
+                return this.f1.Invoke(global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Concat(new global::DocumentIndexer.Interfaces.IRunnable [] {this.f2.Invoke(documentsSourcePathForProcessor1, dataContextFactory)}, runnables)));
             }
         
         }
@@ -573,9 +573,9 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(2)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextIsolationFactory, global::System.String documentsSourcePathForProcessor2, global::System.String extractorServiceUrl, global::System.String outputFolderPath)
+            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, global::System.String documentsSourcePathForProcessor2, global::System.String extractorServiceUrl, global::System.String outputFolderPath)
             {
-                return this.f1.Invoke(documentsSourcePathForProcessor1, dataContextIsolationFactory, new global::DocumentIndexer.Interfaces.IRunnable[]{this.f2.Invoke(documentsSourcePathForProcessor2, extractorServiceUrl, outputFolderPath)});
+                return this.f1.Invoke(documentsSourcePathForProcessor1, dataContextFactory, new global::DocumentIndexer.Interfaces.IRunnable[]{this.f2.Invoke(documentsSourcePathForProcessor2, extractorServiceUrl, outputFolderPath)});
             }
         
         }

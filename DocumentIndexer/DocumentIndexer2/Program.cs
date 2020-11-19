@@ -30,7 +30,7 @@ namespace DocumentIndexer
             var runnable =
                 create.Invoke(
                     documentsSourcePath: settings.FolderPath,
-                    dataContextIsolationFactory: new DataContextFactory(settings.ConnectionString));
+                    dataContextFactory: new DataContextFactory(settings.ConnectionString));
 
             runnable.Run();
 
