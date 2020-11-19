@@ -547,4 +547,37 @@ namespace DocumentIndexer
     
 }
 
+namespace DocumentIndexer
+{
+    public  partial class Program
+    {
+        public sealed partial class VarReturn
+        {
+        
+            [DIVEX.Core.VarReturnClassAttribute()]
+            public sealed class VR2
+            {
+            
+                public static implicit operator DocumentIndexer.Program.VarReturn.VR2(global::DocumentIndexer.JoinAllInputsExtensionMethods1.JoinAllInputsClass cfc)
+                {
+                    return new DocumentIndexer.Program.VarReturn.VR2(cfc);
+                }
+                public readonly global::DocumentIndexer.JoinAllInputsExtensionMethods1.JoinAllInputsClass cfc;
+                public VR2(global::DocumentIndexer.JoinAllInputsExtensionMethods1.JoinAllInputsClass cfc)
+                {
+                    this.cfc = cfc;
+                }
+                [DIVEX.Core.InvokeIndexAttribute(0)]
+                public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePath, global::DocumentIndexer.Interfaces.IFileSystem fileSystem, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, global::System.String extractorServiceUrl, global::DocumentIndexer.Interfaces.IRestClient restClient, global::System.String outputFolderPath)
+                {
+                    return this.cfc.Invoke(documentsSourcePath, fileSystem, dataContextFactory, extractorServiceUrl, restClient, outputFolderPath);
+                }
+            
+            }
+        
+        }
+    }
+    
+}
+
 

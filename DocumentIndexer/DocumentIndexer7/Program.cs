@@ -19,26 +19,7 @@ namespace DocumentIndexer
         {
             var settings = ReadSettingsFromConfigurationFile();
 
-            var createDocumentGrabber = CreateDocumentGrabberAndProcessor();
-
-            var create1 =
-                createDocumentGrabber
-                    .Replace(wordsExtractor: CtorOf<SimpleWordsExtractor>())
-                    .Replace(documentWithExtractedWordsStore: CtorOf<DocumentWithExtractedWordsStore>());
-
-            var create2 =
-                createDocumentGrabber
-                    .Replace(wordsExtractor: CtorOf<RestBasedWordsExtractor>()
-                                                 .Rename(url_extractorServiceUrl: 0))
-                    .Replace(documentWithExtractedWordsStore:
-                        CtorOf<FileSystemBasedDocumentWithExtractedWordsStore>());
-
-            var create3 = CtorOf<CompositeRunnable>()
-                .ReplaceOne(runnables: create1)
-                .ReplaceLast(runnables: create2);
-
-            var create4 = create3
-                .JoinAllInputs();
+            var create4 = CreateApplication();
 
             var runnable =
                 create4.Invoke(
@@ -54,6 +35,30 @@ namespace DocumentIndexer
             Console.WriteLine("Done. Press any key to exit");
 
             Console.ReadKey();
+        }
+
+        public static VarReturn.VR2 CreateApplication()
+        {
+            var createDocumentGrabber = CreateDocumentGrabberAndProcessor();
+
+            var create1 =
+                createDocumentGrabber
+                    .Replace(wordsExtractor: CtorOf<SimpleWordsExtractor>())
+                    .Replace(documentWithExtractedWordsStore: CtorOf<DocumentWithExtractedWordsStore>());
+
+            var create2 =
+                createDocumentGrabber
+                    .Replace(wordsExtractor: CtorOf<RestBasedWordsExtractor>()
+                        .Rename(url_extractorServiceUrl: 0))
+                    .Replace(documentWithExtractedWordsStore:
+                        CtorOf<FileSystemBasedDocumentWithExtractedWordsStore>());
+
+            var create3 = CtorOf<CompositeRunnable>()
+                .ReplaceOne(runnables: create1)
+                .ReplaceLast(runnables: create2);
+
+            return create3
+                .JoinAllInputs();
         }
 
         private static VarReturn.VR1 CreateDocumentGrabberAndProcessor()
