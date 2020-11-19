@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentIndexer5", "Documen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentIndexer6", "DocumentIndexer6\DocumentIndexer6.csproj", "{DB166FB5-C38D-4178-83B0-12FB6B725394}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentIndexer7", "DocumentIndexer7\DocumentIndexer7.csproj", "{91F9DF6C-0874-4BB5-BEF7-C86E04139AB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{DB166FB5-C38D-4178-83B0-12FB6B725394}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB166FB5-C38D-4178-83B0-12FB6B725394}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB166FB5-C38D-4178-83B0-12FB6B725394}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91F9DF6C-0874-4BB5-BEF7-C86E04139AB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91F9DF6C-0874-4BB5-BEF7-C86E04139AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91F9DF6C-0874-4BB5-BEF7-C86E04139AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91F9DF6C-0874-4BB5-BEF7-C86E04139AB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

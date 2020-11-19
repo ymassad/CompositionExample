@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings>
+  <ConnectionString>Server=.\SQLEXPRESS;Database=DocumentIndexer;Trusted_Connection=True;</ConnectionString>
+  <FolderPath>C:\Documents</FolderPath>
+  <FolderPath2>C:\Documents2</FolderPath2>
+  <OutputFolderPath>C:\Output</OutputFolderPath>
+</Settings>
