@@ -23,15 +23,13 @@ namespace DocumentIndexer
 
             var create1 =
                 createDocumentGrabber
-                    .Rename(documentsSourcePath_documentsSourcePathForProcessor1: 0)
                     .Replace(wordsExtractor: CtorOf<SimpleWordsExtractor>())
                     .Replace(documentWithExtractedWordsStore: CtorOf<DocumentWithExtractedWordsStore>());
 
             var create2 =
                 createDocumentGrabber
-                    .Rename(documentsSourcePath_documentsSourcePathForProcessor2: 0)
                     .Replace(wordsExtractor: CtorOf<RestBasedWordsExtractor>()
-                                                 .Rename(url_extractorServiceUrl :0))
+                                                 .Rename(url_extractorServiceUrl: 0))
                     .Replace(documentWithExtractedWordsStore:
                         CtorOf<FileSystemBasedDocumentWithExtractedWordsStore>());
 
@@ -39,15 +37,16 @@ namespace DocumentIndexer
                 .ReplaceOne(runnables: create1)
                 .ReplaceLast(runnables: create2);
 
-            var create4 = create3.Optimize();
+            var create4 = create3
+                .JoinAllInputs();
 
             var runnable =
                 create4.Invoke(
-                    documentsSourcePathForProcessor1:settings.FolderPath,
-                    documentsSourcePathForProcessor2: settings.FolderPath2,
+                    documentsSourcePath: settings.FolderPath,
                     dataContextIsolationFactory: new DataContextFactory(settings.ConnectionString),
                     extractorServiceUrl: "http://localhost",
-                    outputFolderPath: settings.OutputFolderPath);
+                    outputFolderPath: settings.OutputFolderPath,
+                    fileSystem: new FileSystem());
 
             runnable.Run();
 
@@ -60,7 +59,7 @@ namespace DocumentIndexer
         {
             return CtorOf<DocumentGrabberAndProcessor>()
                 .Replace(documentsSource: CtorOf<FileSystemDocumentsSource>()
-                    .Rename(path_documentsSourcePath :0))
+                    .Rename(path_documentsSourcePath: 0))
                 .Replace(documentProcessor: CtorOf<IndexProcessor>());
         }
 

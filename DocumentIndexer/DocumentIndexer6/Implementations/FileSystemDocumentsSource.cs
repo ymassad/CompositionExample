@@ -11,21 +11,23 @@ namespace DocumentIndexer.Implementations
     public class FileSystemDocumentsSource : IDocumentsSource
     {
         private readonly string path;
+        private readonly IFileSystem fileSystem;
 
-        public FileSystemDocumentsSource(string path)
+        public FileSystemDocumentsSource(string path, IFileSystem fileSystem)
         {
             this.path = path;
+            this.fileSystem = fileSystem;
         }
 
         public InputDocument[] GetDocuments()
         {
             return
-                Directory.GetFiles(path)
+                fileSystem.GetFiles(path)
                     .Select(file =>
                         new InputDocument
                         {
                             DocumentName = Path.GetFileName(file),
-                            DocumentContent = File.ReadAllText(file)
+                            DocumentContent = fileSystem.ReadAllText(file)
                         })
                     .ToArray();
         }

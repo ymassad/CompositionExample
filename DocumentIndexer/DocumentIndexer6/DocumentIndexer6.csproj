@@ -59,6 +59,7 @@
     <Compile Include="Data\DataContext.cs" />
     <Compile Include="Data\Document.cs" />
     <Compile Include="Implementations\CompositeRunnable.cs" />
+    <Compile Include="Implementations\FileSystem.cs" />
     <Compile Include="Implementations\FileSystemBasedDocumentWithExtractedWordsStore.cs" />
     <Compile Include="Implementations\FileSystemDocumentsSource.cs" />
     <Compile Include="Implementations\DataContextFactory.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Interfaces\IDocumentsSource.cs" />
     <Compile Include="Interfaces\DTOs\InputDocument.cs" />
     <Compile Include="Interfaces\IDocumentWithExtractedWordsStore.cs" />
+    <Compile Include="Interfaces\IFileSystem.cs" />
     <Compile Include="Interfaces\IRunnable.cs" />
     <Compile Include="Interfaces\IWordsExtractor.cs" />
     <Compile Include="Program.cs" />
