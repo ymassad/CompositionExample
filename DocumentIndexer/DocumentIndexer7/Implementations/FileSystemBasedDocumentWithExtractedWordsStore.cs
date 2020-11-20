@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.IO.Abstractions;
 using System.Xml.Serialization;
 using DocumentIndexer.Interfaces;
 using DocumentIndexer.Interfaces.DTOs;
@@ -25,7 +26,7 @@ namespace DocumentIndexer.Implementations
 
             int index = 1;
 
-            while(fileSystem.FileExists(filePath))
+            while(fileSystem.File.Exists(filePath))
             {
                 filePath = baseFilePath + index;
                 index++;
@@ -33,7 +34,7 @@ namespace DocumentIndexer.Implementations
 
             var serializer = new XmlSerializer(typeof(InputDocumentWithExtractedWords));
 
-            using (var fs = fileSystem.OpenFileForWrite(filePath))
+            using (var fs = fileSystem.File.OpenWrite(filePath))
             {
                 serializer.Serialize(fs, inputDocumentWithExtractedWords);
             }

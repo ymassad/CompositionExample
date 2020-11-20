@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.IO.Abstractions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,12 +23,12 @@ namespace DocumentIndexer.Implementations
         public InputDocument[] GetDocuments()
         {
             return
-                fileSystem.GetFiles(path)
+                fileSystem.Directory.GetFiles(path)
                     .Select(file =>
                         new InputDocument
                         {
                             DocumentName = Path.GetFileName(file),
-                            DocumentContent = fileSystem.ReadAllText(file)
+                            DocumentContent = fileSystem.File.ReadAllText(file)
                         })
                     .ToArray();
         }

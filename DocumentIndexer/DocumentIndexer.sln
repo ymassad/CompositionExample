@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentIndexer6", "Documen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentIndexer7", "DocumentIndexer7\DocumentIndexer7.csproj", "{91F9DF6C-0874-4BB5-BEF7-C86E04139AB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingForDocumentIndexer7", "TestingForDocumentIndexer7\TestingForDocumentIndexer7.csproj", "{3F39A4A6-D203-4341-A525-4A401C1EA055}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{91F9DF6C-0874-4BB5-BEF7-C86E04139AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91F9DF6C-0874-4BB5-BEF7-C86E04139AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91F9DF6C-0874-4BB5-BEF7-C86E04139AB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F39A4A6-D203-4341-A525-4A401C1EA055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F39A4A6-D203-4341-A525-4A401C1EA055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F39A4A6-D203-4341-A525-4A401C1EA055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F39A4A6-D203-4341-A525-4A401C1EA055}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
