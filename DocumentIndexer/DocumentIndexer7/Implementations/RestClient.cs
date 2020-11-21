@@ -9,7 +9,7 @@ namespace DocumentIndexer.Implementations
     public class RestClient : IRestClient
     {
         //HttpClient client = new HttpClient();
-        public string Post(string url, string body)
+        public string Post(Uri url, string body)
         {
             /*
             Because this is a sample application, I don't want to do a real HTTP post here.

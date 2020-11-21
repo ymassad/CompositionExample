@@ -7,10 +7,10 @@ namespace DocumentIndexer.Implementations
 {
     public class RestBasedWordsExtractor : IWordsExtractor
     {
-        private readonly string url;
+        private readonly Uri url;
         private readonly IRestClient restClient;
 
-        public RestBasedWordsExtractor(string url, IRestClient restClient)
+        public RestBasedWordsExtractor(Uri url, IRestClient restClient)
         {
             this.url = url;
             this.restClient = restClient;
@@ -18,7 +18,7 @@ namespace DocumentIndexer.Implementations
 
         public string[] GetWords(string content)
         {
-            var actionUrl = url + "/GetWords";
+            var actionUrl = new Uri(url, "/GetWords");
 
             return JsonConvert.DeserializeObject<string[]>(restClient.Post(actionUrl, content));
         }

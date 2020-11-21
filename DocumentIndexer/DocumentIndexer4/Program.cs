@@ -44,7 +44,7 @@ namespace DocumentIndexer
                     documentsSourcePathForProcessor1:settings.FolderPath,
                     documentsSourcePathForProcessor2: settings.FolderPath2,
                     dataContextFactory: new DataContextFactory(settings.ConnectionString),
-                    extractorServiceUrl: "http://localhost",
+                    extractorServiceUrl: new Uri("http://localhost"),
                     outputFolderPath: settings.OutputFolderPath);
 
             runnable.Run();

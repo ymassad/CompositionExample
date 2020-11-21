@@ -45,7 +45,7 @@ namespace DocumentIndexer
                 create4.Invoke(
                     documentsSourcePath: settings.FolderPath,
                     dataContextFactory: new DataContextFactory(settings.ConnectionString),
-                    extractorServiceUrl: "http://localhost",
+                    extractorServiceUrl: new Uri("http://localhost"),
                     outputFolderPath: settings.OutputFolderPath,
                     fileSystem: new FileSystem());
 

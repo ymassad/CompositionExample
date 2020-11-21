@@ -21,12 +21,12 @@ public static partial class RestModule
     {
     
         [DIVEX.Core.ReplacedDelegateAttribute(1)]
-        public  delegate global::System.String ParameterDelegate0n2(global::System.String url, global::System.String body);
+        public  delegate global::System.String ParameterDelegate0n2(global::System.Uri url, global::System.String body);
         [DIVEX.Core.InvokeIndexAttribute(0)]
-        [DIVEX.Core.OriginalMethodAttribute("GetWordsUsingRestService", 0, "System.String", "System.Func<System.String, System.String, System.String>", "System.String")]
-        public global::System.String[] Invoke(global::System.String url, ParameterDelegate0n2 post, global::System.String content)
+        [DIVEX.Core.OriginalMethodAttribute("GetWordsUsingRestService", 0, "System.Uri", "System.Func<System.Uri, System.String, System.String>", "System.String")]
+        public global::System.String[] Invoke(global::System.Uri url, ParameterDelegate0n2 post, global::System.String content)
         {
-            return global::DocumentIndexer.Implementations.RestModule.GetWordsUsingRestService(url, (post is null) ? null : new global::System.Func<global::System.String, global::System.String, global::System.String>(post), content);
+            return global::DocumentIndexer.Implementations.RestModule.GetWordsUsingRestService(url, (post is null) ? null : new global::System.Func<global::System.Uri, global::System.String, global::System.String>(post), content);
         }
     
     }
@@ -204,7 +204,7 @@ namespace DocumentIndexer
             [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0)]
             [DIVEX.Core.JoinedParametersDetailsAttribute("(0;3),(1;4;8),2,5,6,7")]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
-            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Func<global::DocumentIndexer.Data.DataContext> createDataContext, global::System.String extractorServiceUrl, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.String outputFolderPath)
+            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Func<global::DocumentIndexer.Data.DataContext> createDataContext, global::System.Uri extractorServiceUrl, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.String outputFolderPath)
             {
                 this.function.Invoke(documentsSourcePath,fileSystem,new global::System.Func<global::DocumentIndexer.Data.DataContext>(createDataContext),documentsSourcePath,fileSystem,extractorServiceUrl,new global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2(post),outputFolderPath,fileSystem);
             }
@@ -278,7 +278,7 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(3)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Func<global::DocumentIndexer.Data.DataContext> createDataContext, [DIVEX.Core.ParameterNameAttribute("documentsSourcePath")]global::System.String documentsSourcePath1, [DIVEX.Core.ParameterNameAttribute("fileSystem")]global::System.IO.Abstractions.IFileSystem fileSystem1, global::System.String extractorServiceUrl, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.String outputFolderPath, [DIVEX.Core.ParameterNameAttribute("fileSystem")]global::System.IO.Abstractions.IFileSystem fileSystem2)
+            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Func<global::DocumentIndexer.Data.DataContext> createDataContext, [DIVEX.Core.ParameterNameAttribute("documentsSourcePath")]global::System.String documentsSourcePath1, [DIVEX.Core.ParameterNameAttribute("fileSystem")]global::System.IO.Abstractions.IFileSystem fileSystem1, global::System.Uri extractorServiceUrl, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.String outputFolderPath, [DIVEX.Core.ParameterNameAttribute("fileSystem")]global::System.IO.Abstractions.IFileSystem fileSystem2)
             {
                 this.f1.Invoke(documentsSourcePath, fileSystem, createDataContext, new global::System.Action[]{() => this.f2.Invoke(documentsSourcePath1, fileSystem1, extractorServiceUrl, post, outputFolderPath, fileSystem2)});
             }
@@ -405,7 +405,7 @@ namespace DocumentIndexer
     public static class InjectWithNamedArgumentsExtensionMethods4
     {
     
-        public static DocumentIndexer.InjectWithNamedArgumentsExtensionMethods4.InjectClass Inject(this global::DocumentIndexer.Program.VarReturn.VR1 f1, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass extractWords, Object documentContent_content)
+        public static DocumentIndexer.InjectWithNamedArgumentsExtensionMethods4.InjectClass Inject(this global::DocumentIndexer.Program.VarReturn.VR1 f1, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass extractWords)
         {
             return new InjectClass(f1, extractWords);
         }
@@ -426,7 +426,7 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(2)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.String url, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.Action<global::DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords> storeDocumentWithExtractedWords)
+            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Uri url, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.Action<global::DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords> storeDocumentWithExtractedWords)
             {
                 this.f1.Invoke(documentsSourcePath, fileSystem, documentContent => this.f2.Invoke(url, post, documentContent), storeDocumentWithExtractedWords);
             }
@@ -500,7 +500,7 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(4)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.String extractorServiceUrl, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.String outputFolderPath, [DIVEX.Core.ParameterNameAttribute("fileSystem")]global::System.IO.Abstractions.IFileSystem fileSystem1)
+            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Uri extractorServiceUrl, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.String outputFolderPath, [DIVEX.Core.ParameterNameAttribute("fileSystem")]global::System.IO.Abstractions.IFileSystem fileSystem1)
             {
                 this.f1.Invoke(documentsSourcePath, fileSystem, extractorServiceUrl, post, obj => this.f2.Invoke(outputFolderPath, fileSystem1, obj));
             }
@@ -564,7 +564,7 @@ namespace DocumentIndexer
             [DIVEX.Core.InvokeIndexAttribute(0)]
             [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0)]
             [DIVEX.Core.ParameterIndexAttribute(2)]
-            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.String extractorServiceUrl, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.Action<global::DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords> storeDocumentWithExtractedWords)
+            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Uri extractorServiceUrl, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.Action<global::DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords> storeDocumentWithExtractedWords)
             {
                 this.f1.Invoke(documentsSourcePath, fileSystem, extractorServiceUrl, post, storeDocumentWithExtractedWords);
             }
@@ -572,39 +572,6 @@ namespace DocumentIndexer
         }
     
     }
-}
-
-namespace DocumentIndexer
-{
-    public  partial class Program
-    {
-        public sealed partial class VarReturn
-        {
-        
-            [DIVEX.Core.VarReturnClassAttribute()]
-            public sealed class VR2
-            {
-            
-                public static implicit operator DocumentIndexer.Program.VarReturn.VR2(global::DocumentIndexer.JoinAllInputsExtensionMethods1.JoinAllInputsClass cfc)
-                {
-                    return new DocumentIndexer.Program.VarReturn.VR2(cfc);
-                }
-                public readonly global::DocumentIndexer.JoinAllInputsExtensionMethods1.JoinAllInputsClass cfc;
-                public VR2(global::DocumentIndexer.JoinAllInputsExtensionMethods1.JoinAllInputsClass cfc)
-                {
-                    this.cfc = cfc;
-                }
-                [DIVEX.Core.InvokeIndexAttribute(0)]
-                public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Func<global::DocumentIndexer.Data.DataContext> createDataContext, global::System.String extractorServiceUrl, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.String outputFolderPath)
-                {
-                    this.cfc.Invoke(documentsSourcePath, fileSystem, createDataContext, extractorServiceUrl, post, outputFolderPath);
-                }
-            
-            }
-        
-        }
-    }
-    
 }
 
 namespace DocumentIndexer
@@ -631,6 +598,39 @@ namespace DocumentIndexer
                 public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::DocumentIndexer.Program.MainModule.IndexDocumentToFunctionClass.ParameterDelegate0n1 extractWords, global::System.Action<global::DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords> storeDocumentWithExtractedWords)
                 {
                     this.cfc.Invoke(documentsSourcePath, fileSystem, extractWords, storeDocumentWithExtractedWords);
+                }
+            
+            }
+        
+        }
+    }
+    
+}
+
+namespace DocumentIndexer
+{
+    public  partial class Program
+    {
+        public sealed partial class VarReturn
+        {
+        
+            [DIVEX.Core.VarReturnClassAttribute()]
+            public sealed class VR2
+            {
+            
+                public static implicit operator DocumentIndexer.Program.VarReturn.VR2(global::DocumentIndexer.JoinAllInputsExtensionMethods1.JoinAllInputsClass cfc)
+                {
+                    return new DocumentIndexer.Program.VarReturn.VR2(cfc);
+                }
+                public readonly global::DocumentIndexer.JoinAllInputsExtensionMethods1.JoinAllInputsClass cfc;
+                public VR2(global::DocumentIndexer.JoinAllInputsExtensionMethods1.JoinAllInputsClass cfc)
+                {
+                    this.cfc = cfc;
+                }
+                [DIVEX.Core.InvokeIndexAttribute(0)]
+                public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Func<global::DocumentIndexer.Data.DataContext> createDataContext, global::System.Uri extractorServiceUrl, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.String outputFolderPath)
+                {
+                    this.cfc.Invoke(documentsSourcePath, fileSystem, createDataContext, extractorServiceUrl, post, outputFolderPath);
                 }
             
             }

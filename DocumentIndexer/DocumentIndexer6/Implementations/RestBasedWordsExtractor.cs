@@ -6,9 +6,9 @@ namespace DocumentIndexer.Implementations
 {
     public class RestBasedWordsExtractor : IWordsExtractor
     {
-        private readonly string url;
+        private readonly Uri url;
 
-        public RestBasedWordsExtractor(string url)
+        public RestBasedWordsExtractor(Uri url)
         {
             this.url = url;
         }

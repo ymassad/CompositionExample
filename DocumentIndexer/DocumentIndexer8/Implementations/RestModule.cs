@@ -7,17 +7,16 @@ namespace DocumentIndexer.Implementations
     public static class RestModule
     {
         public static string[] GetWordsUsingRestService(
-            string url,
-            Func<string /*url*/, string /*body*/, string> post,
+            Uri url,
+            Func<Uri /*url*/, string /*body*/, string> post,
             string content)
         {
-            var actionUrl = url + "/GetWords";
+            var actionUrl = new Uri(url, "/GetWords");
 
             return JsonConvert.DeserializeObject<string[]>(post(actionUrl, content));
         }
 
-
-        public static string Post(string url, string body)
+        public static string Post(Uri url, string body)
         {
             /*
             Because this is a sample application, I don't want to do a real HTTP post here.

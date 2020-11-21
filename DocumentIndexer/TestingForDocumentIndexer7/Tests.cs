@@ -34,7 +34,7 @@ namespace TestingForDocumentIndexer7
 
                 var restClient = A.Fake<IRestClient>();
 
-                A.CallTo(() => restClient.Post("https://fakeservice.com/GetWords", A<string>.Ignored))
+                A.CallTo(() => restClient.Post(new Uri("https://fakeservice.com/GetWords"), A<string>.Ignored))
                     .ReturnsLazily((string url, string body) =>
                     {
                         var fakeWords = body
@@ -52,7 +52,7 @@ namespace TestingForDocumentIndexer7
                     "C:\\Documents",
                     mockFileSystem,
                     fakeDataContextFactory,
-                    "https://fakeservice.com",
+                    new Uri("https://fakeservice.com"),
                     restClient,
                     "C:\\Output");
                 

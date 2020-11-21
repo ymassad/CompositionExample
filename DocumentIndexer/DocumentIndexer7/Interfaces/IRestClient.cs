@@ -1,7 +1,9 @@
-﻿namespace DocumentIndexer.Interfaces
+﻿using System;
+
+namespace DocumentIndexer.Interfaces
 {
     public interface IRestClient
     {
-        string Post(string url, string body);
+        string Post(Uri url, string body);
     }
 }

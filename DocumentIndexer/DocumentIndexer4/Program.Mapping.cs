@@ -183,7 +183,7 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePathForProcessor2, global::System.String extractorServiceUrl, global::DocumentIndexer.Interfaces.IDocumentWithExtractedWordsStore documentWithExtractedWordsStore)
+            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePathForProcessor2, global::System.Uri extractorServiceUrl, global::DocumentIndexer.Interfaces.IDocumentWithExtractedWordsStore documentWithExtractedWordsStore)
             {
                 return this.f1.Invoke(documentsSourcePathForProcessor2, this.f2.Invoke(extractorServiceUrl), documentWithExtractedWordsStore);
             }
@@ -271,7 +271,7 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(2)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePathForProcessor2, global::System.String extractorServiceUrl, global::System.String outputFolderPath)
+            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePathForProcessor2, global::System.Uri extractorServiceUrl, global::System.String outputFolderPath)
             {
                 return this.f1.Invoke(documentsSourcePathForProcessor2, extractorServiceUrl, this.f2.Invoke(outputFolderPath));
             }
@@ -319,7 +319,7 @@ namespace DocumentIndexer
             [DIVEX.Core.InvokeIndexAttribute(0)]
             [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0)]
             [DIVEX.Core.ParameterIndexAttribute(0)]
-            public global::DocumentIndexer.Implementations.RestBasedWordsExtractor Invoke(global::System.String extractorServiceUrl)
+            public global::DocumentIndexer.Implementations.RestBasedWordsExtractor Invoke(global::System.Uri extractorServiceUrl)
             {
                 return this.f1.Invoke(extractorServiceUrl);
             }
@@ -334,8 +334,8 @@ namespace DocumentIndexer
                 return new AdapterForF1();
             }
             [DIVEX.Core.InvokeIndexAttribute(0)]
-            [DIVEX.Core.OriginalConstructorAttribute("System.String")]
-            public global::DocumentIndexer.Implementations.RestBasedWordsExtractor Invoke(global::System.String url)
+            [DIVEX.Core.OriginalConstructorAttribute("System.Uri")]
+            public global::DocumentIndexer.Implementations.RestBasedWordsExtractor Invoke(global::System.Uri url)
             {
                 return new global::DocumentIndexer.Implementations.RestBasedWordsExtractor(url);
             }
@@ -535,7 +535,7 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(2)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, global::System.String documentsSourcePathForProcessor2, global::System.String extractorServiceUrl, global::System.String outputFolderPath)
+            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePathForProcessor1, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, global::System.String documentsSourcePathForProcessor2, global::System.Uri extractorServiceUrl, global::System.String outputFolderPath)
             {
                 return this.f1.Invoke(documentsSourcePathForProcessor1, dataContextFactory, new global::DocumentIndexer.Interfaces.IRunnable[]{this.f2.Invoke(documentsSourcePathForProcessor2, extractorServiceUrl, outputFolderPath)});
             }

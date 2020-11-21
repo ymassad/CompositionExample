@@ -19,7 +19,7 @@ namespace DocumentIndexer
             runnable.Invoke(
                 documentsSourcePath: settings.FolderPath,
                 createDataContext: () => Implementations.StorageModule.CreateDatabaseContext(settings.ConnectionString),
-                extractorServiceUrl: "http://localhost",
+                extractorServiceUrl: new Uri("http://localhost"),
                 outputFolderPath: settings.OutputFolderPath,
                 fileSystem: new FileSystem(),
                 post: Implementations.RestModule.Post);
@@ -45,7 +45,7 @@ namespace DocumentIndexer
 
             var create2 =
                 grabAndProcessDocuments
-                    .Inject(extractWords: RestModule.GetWordsUsingRestService, documentContent_content:0)
+                    .Inject(extractWords: RestModule.GetWordsUsingRestService)
                     .Rename(url_extractorServiceUrl: 0)
                     .Inject(storeDocumentWithExtractedWords: StorageModule.StoreToTheFileSystem);
 

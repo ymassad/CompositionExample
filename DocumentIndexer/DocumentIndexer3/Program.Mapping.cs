@@ -24,7 +24,7 @@ namespace DocumentIndexer
             [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0)]
             [DIVEX.Core.JoinedParametersDetailsAttribute("(0;2),1,3,4")]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
-            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePath, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, global::System.String extractorServiceUrl, global::System.String outputFolderPath)
+            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePath, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, global::System.Uri extractorServiceUrl, global::System.String outputFolderPath)
             {
                 return this.function.Invoke(documentsSourcePath,dataContextFactory,documentsSourcePath,extractorServiceUrl,outputFolderPath);
             }
@@ -216,7 +216,7 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePath, global::System.String extractorServiceUrl, global::DocumentIndexer.Interfaces.IDocumentWithExtractedWordsStore documentWithExtractedWordsStore)
+            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePath, global::System.Uri extractorServiceUrl, global::DocumentIndexer.Interfaces.IDocumentWithExtractedWordsStore documentWithExtractedWordsStore)
             {
                 return this.f1.Invoke(documentsSourcePath, this.f2.Invoke(extractorServiceUrl), documentWithExtractedWordsStore);
             }
@@ -304,7 +304,7 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(2)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePath, global::System.String extractorServiceUrl, global::System.String outputFolderPath)
+            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePath, global::System.Uri extractorServiceUrl, global::System.String outputFolderPath)
             {
                 return this.f1.Invoke(documentsSourcePath, extractorServiceUrl, this.f2.Invoke(outputFolderPath));
             }
@@ -352,7 +352,7 @@ namespace DocumentIndexer
             [DIVEX.Core.InvokeIndexAttribute(0)]
             [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0)]
             [DIVEX.Core.ParameterIndexAttribute(0)]
-            public global::DocumentIndexer.Implementations.RestBasedWordsExtractor Invoke(global::System.String extractorServiceUrl)
+            public global::DocumentIndexer.Implementations.RestBasedWordsExtractor Invoke(global::System.Uri extractorServiceUrl)
             {
                 return this.f1.Invoke(extractorServiceUrl);
             }
@@ -367,8 +367,8 @@ namespace DocumentIndexer
                 return new AdapterForF1();
             }
             [DIVEX.Core.InvokeIndexAttribute(0)]
-            [DIVEX.Core.OriginalConstructorAttribute("System.String")]
-            public global::DocumentIndexer.Implementations.RestBasedWordsExtractor Invoke(global::System.String url)
+            [DIVEX.Core.OriginalConstructorAttribute("System.Uri")]
+            public global::DocumentIndexer.Implementations.RestBasedWordsExtractor Invoke(global::System.Uri url)
             {
                 return new global::DocumentIndexer.Implementations.RestBasedWordsExtractor(url);
             }
@@ -504,7 +504,7 @@ namespace DocumentIndexer
             [DIVEX.Core.ParameterIndexAttribute(2)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePath, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, [DIVEX.Core.ParameterNameAttribute("documentsSourcePath")]global::System.String documentsSourcePath1, global::System.String extractorServiceUrl, global::System.String outputFolderPath)
+            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePath, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, [DIVEX.Core.ParameterNameAttribute("documentsSourcePath")]global::System.String documentsSourcePath1, global::System.Uri extractorServiceUrl, global::System.String outputFolderPath)
             {
                 return this.f1.Invoke(documentsSourcePath, dataContextFactory, new global::DocumentIndexer.Interfaces.IRunnable[]{this.f2.Invoke(documentsSourcePath1, extractorServiceUrl, outputFolderPath)});
             }
