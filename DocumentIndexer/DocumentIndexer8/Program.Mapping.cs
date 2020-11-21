@@ -3,11 +3,191 @@ using DIVEX.Core;
 
 namespace DocumentIndexer
 {
+    public partial class Program
+{
+    [DIVEX.Core.OriginalClassTypeAttribute(typeof(global::DocumentIndexer.Implementations.RestModule))]
+public static partial class RestModule
+{
+    public static DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass GetWordsUsingRestService
+    {
+        get
+        {
+            return new DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass();
+        }
+    }
+
+    [DIVEX.Core.FunctionReferenceClassAttribute("DocumentIndexer.Implementations.RestModule", "GetWordsUsingRestService")]
+    public sealed class GetWordsUsingRestServiceToFunctionClass
+    {
+    
+        [DIVEX.Core.ReplacedDelegateAttribute(1)]
+        public  delegate global::System.String ParameterDelegate0n2(global::System.String url, global::System.String body);
+        [DIVEX.Core.InvokeIndexAttribute(0)]
+        [DIVEX.Core.OriginalMethodAttribute("GetWordsUsingRestService", 0, "System.String", "System.Func<System.String, System.String, System.String>", "System.String")]
+        public global::System.String[] Invoke(global::System.String url, ParameterDelegate0n2 post, global::System.String content)
+        {
+            return global::DocumentIndexer.Implementations.RestModule.GetWordsUsingRestService(url, (post is null) ? null : new global::System.Func<global::System.String, global::System.String, global::System.String>(post), content);
+        }
+    
+    }
+
+}
+[DIVEX.Core.OriginalClassTypeAttribute(typeof(global::DocumentIndexer.Implementations.MainModule))]
+public static partial class MainModule
+{
+    public static DocumentIndexer.Program.MainModule.RunMultipleToFunctionClass RunMultiple
+    {
+        get
+        {
+            return new DocumentIndexer.Program.MainModule.RunMultipleToFunctionClass();
+        }
+    }
+    public static DocumentIndexer.Program.MainModule.GrabAndProcessorDocumentsToFunctionClass GrabAndProcessorDocuments
+    {
+        get
+        {
+            return new DocumentIndexer.Program.MainModule.GrabAndProcessorDocumentsToFunctionClass();
+        }
+    }
+    public static DocumentIndexer.Program.MainModule.IndexDocumentToFunctionClass IndexDocument
+    {
+        get
+        {
+            return new DocumentIndexer.Program.MainModule.IndexDocumentToFunctionClass();
+        }
+    }
+    public static DocumentIndexer.Program.MainModule.GetWordsToFunctionClass GetWords
+    {
+        get
+        {
+            return new DocumentIndexer.Program.MainModule.GetWordsToFunctionClass();
+        }
+    }
+
+    [DIVEX.Core.FunctionReferenceClassAttribute("DocumentIndexer.Implementations.MainModule", "RunMultiple")]
+    public sealed class RunMultipleToFunctionClass
+    {
+    
+        [DIVEX.Core.InvokeIndexAttribute(0)]
+        [DIVEX.Core.OriginalMethodAttribute("RunMultiple", 0, "System.Action[]")]
+        public void Invoke(global::System.Action[] runnables)
+        {
+            global::DocumentIndexer.Implementations.MainModule.RunMultiple(runnables);
+        }
+    
+    }
+    [DIVEX.Core.FunctionReferenceClassAttribute("DocumentIndexer.Implementations.MainModule", "GrabAndProcessorDocuments")]
+    public sealed class GrabAndProcessorDocumentsToFunctionClass
+    {
+    
+        [DIVEX.Core.InvokeIndexAttribute(0)]
+        [DIVEX.Core.OriginalMethodAttribute("GrabAndProcessorDocuments", 0, "System.Func<DocumentIndexer.Interfaces.DTOs.InputDocument[]>", "System.Action<DocumentIndexer.Interfaces.DTOs.InputDocument>")]
+        public void Invoke(global::System.Func<global::DocumentIndexer.Interfaces.DTOs.InputDocument[]> getDocuments, global::System.Action<global::DocumentIndexer.Interfaces.DTOs.InputDocument> processDocument)
+        {
+            global::DocumentIndexer.Implementations.MainModule.GrabAndProcessorDocuments(getDocuments, processDocument);
+        }
+    
+    }
+    [DIVEX.Core.FunctionReferenceClassAttribute("DocumentIndexer.Implementations.MainModule", "IndexDocument")]
+    public sealed class IndexDocumentToFunctionClass
+    {
+    
+        [DIVEX.Core.ReplacedDelegateAttribute(0)]
+        public  delegate global::System.String[] ParameterDelegate0n1(global::System.String documentContent);
+        [DIVEX.Core.InvokeIndexAttribute(0)]
+        [DIVEX.Core.OriginalMethodAttribute("IndexDocument", 0, "System.Func<System.String, System.String[]>", "System.Action<DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords>", "DocumentIndexer.Interfaces.DTOs.InputDocument")]
+        public void Invoke(ParameterDelegate0n1 extractWords, global::System.Action<global::DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords> storeDocumentWithExtractedWords, global::DocumentIndexer.Interfaces.DTOs.InputDocument inputDocument)
+        {
+            global::DocumentIndexer.Implementations.MainModule.IndexDocument((extractWords is null) ? null : new global::System.Func<global::System.String, global::System.String[]>(extractWords), storeDocumentWithExtractedWords, inputDocument);
+        }
+    
+    }
+    [DIVEX.Core.FunctionReferenceClassAttribute("DocumentIndexer.Implementations.MainModule", "GetWords")]
+    public sealed class GetWordsToFunctionClass
+    {
+    
+        [DIVEX.Core.InvokeIndexAttribute(0)]
+        [DIVEX.Core.OriginalMethodAttribute("GetWords", 0, "System.String")]
+        public global::System.String[] Invoke(global::System.String content)
+        {
+            return global::DocumentIndexer.Implementations.MainModule.GetWords(content);
+        }
+    
+    }
+
+}
+[DIVEX.Core.OriginalClassTypeAttribute(typeof(global::DocumentIndexer.Implementations.StorageModule))]
+public static partial class StorageModule
+{
+    public static DocumentIndexer.Program.StorageModule.StoreToTheDatabaseToFunctionClass StoreToTheDatabase
+    {
+        get
+        {
+            return new DocumentIndexer.Program.StorageModule.StoreToTheDatabaseToFunctionClass();
+        }
+    }
+    public static DocumentIndexer.Program.StorageModule.StoreToTheFileSystemToFunctionClass StoreToTheFileSystem
+    {
+        get
+        {
+            return new DocumentIndexer.Program.StorageModule.StoreToTheFileSystemToFunctionClass();
+        }
+    }
+    public static DocumentIndexer.Program.StorageModule.GetDocumentsFromFileSystemToFunctionClass GetDocumentsFromFileSystem
+    {
+        get
+        {
+            return new DocumentIndexer.Program.StorageModule.GetDocumentsFromFileSystemToFunctionClass();
+        }
+    }
+
+    [DIVEX.Core.FunctionReferenceClassAttribute("DocumentIndexer.Implementations.StorageModule", "StoreToTheDatabase")]
+    public sealed class StoreToTheDatabaseToFunctionClass
+    {
+    
+        [DIVEX.Core.InvokeIndexAttribute(0)]
+        [DIVEX.Core.OriginalMethodAttribute("StoreToTheDatabase", 0, "System.Func<DocumentIndexer.Data.DataContext>", "DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords")]
+        public void Invoke(global::System.Func<global::DocumentIndexer.Data.DataContext> createDataContext, global::DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords inputDocumentWithExtractedWords)
+        {
+            global::DocumentIndexer.Implementations.StorageModule.StoreToTheDatabase(createDataContext, inputDocumentWithExtractedWords);
+        }
+    
+    }
+    [DIVEX.Core.FunctionReferenceClassAttribute("DocumentIndexer.Implementations.StorageModule", "StoreToTheFileSystem")]
+    public sealed class StoreToTheFileSystemToFunctionClass
+    {
+    
+        [DIVEX.Core.InvokeIndexAttribute(0)]
+        [DIVEX.Core.OriginalMethodAttribute("StoreToTheFileSystem", 0, "System.String", "System.IO.Abstractions.IFileSystem", "DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords")]
+        public void Invoke(global::System.String outputFolderPath, global::System.IO.Abstractions.IFileSystem fileSystem, global::DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords inputDocumentWithExtractedWords)
+        {
+            global::DocumentIndexer.Implementations.StorageModule.StoreToTheFileSystem(outputFolderPath, fileSystem, inputDocumentWithExtractedWords);
+        }
+    
+    }
+    [DIVEX.Core.FunctionReferenceClassAttribute("DocumentIndexer.Implementations.StorageModule", "GetDocumentsFromFileSystem")]
+    public sealed class GetDocumentsFromFileSystemToFunctionClass
+    {
+    
+        [DIVEX.Core.InvokeIndexAttribute(0)]
+        [DIVEX.Core.OriginalMethodAttribute("GetDocumentsFromFileSystem", 0, "System.String", "System.IO.Abstractions.IFileSystem")]
+        public global::DocumentIndexer.Interfaces.DTOs.InputDocument[] Invoke(global::System.String path, global::System.IO.Abstractions.IFileSystem fileSystem)
+        {
+            return global::DocumentIndexer.Implementations.StorageModule.GetDocumentsFromFileSystem(path, fileSystem);
+        }
+    
+    }
+
+}
+}
+}
+namespace DocumentIndexer
+{
     
     public static class JoinAllInputsExtensionMethods1
     {
     
-        public static DocumentIndexer.JoinAllInputsExtensionMethods1.JoinAllInputsClass JoinAllInputs(this global::DocumentIndexer.ReplaceLastExtensionMethods1.ReplaceLastClass function)
+        public static DocumentIndexer.JoinAllInputsExtensionMethods1.JoinAllInputsClass JoinAllInputs(this global::DocumentIndexer.InjectLastExtensionMethods1.InjectLastClass function)
         {
             return new JoinAllInputsClass(function);
         }
@@ -15,8 +195,8 @@ namespace DocumentIndexer
         public sealed class JoinAllInputsClass
         {
         
-            public readonly global::DocumentIndexer.ReplaceLastExtensionMethods1.ReplaceLastClass function;
-            public JoinAllInputsClass(global::DocumentIndexer.ReplaceLastExtensionMethods1.ReplaceLastClass function)
+            public readonly global::DocumentIndexer.InjectLastExtensionMethods1.InjectLastClass function;
+            public JoinAllInputsClass(global::DocumentIndexer.InjectLastExtensionMethods1.InjectLastClass function)
             {
                 this.function = function;
             }
@@ -24,9 +204,9 @@ namespace DocumentIndexer
             [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0)]
             [DIVEX.Core.JoinedParametersDetailsAttribute("(0;3),(1;4;8),2,5,6,7")]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
-            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, global::System.String extractorServiceUrl, global::DocumentIndexer.Interfaces.IRestClient restClient, global::System.String outputFolderPath)
+            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Func<global::DocumentIndexer.Data.DataContext> createDataContext, global::System.String extractorServiceUrl, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.String outputFolderPath)
             {
-                return this.function.Invoke(documentsSourcePath,fileSystem,dataContextFactory,documentsSourcePath,fileSystem,extractorServiceUrl,restClient,outputFolderPath,fileSystem);
+                this.function.Invoke(documentsSourcePath,fileSystem,new global::System.Func<global::DocumentIndexer.Data.DataContext>(createDataContext),documentsSourcePath,fileSystem,extractorServiceUrl,new global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2(post),outputFolderPath,fileSystem);
             }
         
         }
@@ -37,48 +217,33 @@ namespace DocumentIndexer
 namespace DocumentIndexer
 {
     
-    public static class ReplaceWithNamedArgumentsExtensionMethods1
+    public static class InjectOneExtensionMethods1
     {
     
-        public static DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods1.ReplaceClass Replace(this DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor> f1, global::DocumentIndexer.RenameExtensionMethods2.RenameClass documentsSource)
+        public static DocumentIndexer.InjectOneExtensionMethods1.InjectOneClass InjectOne(this global::DocumentIndexer.Program.MainModule.RunMultipleToFunctionClass f1, global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods5.InjectClass runnables)
         {
-            return new ReplaceClass(f1, documentsSource);
+            return new InjectOneClass(f1, runnables);
         }
-        [DIVEX.Core.ReplaceClassAttribute("f1", "f2", "documentsSource")]
-        public sealed class ReplaceClass
+        [DIVEX.Core.InjectOneClassAttribute("f1", "f2")]
+        public sealed class InjectOneClass
         {
         
-            public readonly AdapterForF1 f1;
-            public readonly global::DocumentIndexer.RenameExtensionMethods2.RenameClass f2;
-            public ReplaceClass(AdapterForF1 f1, global::DocumentIndexer.RenameExtensionMethods2.RenameClass f2)
+            public readonly global::DocumentIndexer.Program.MainModule.RunMultipleToFunctionClass f1;
+            public readonly global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods5.InjectClass f2;
+            public InjectOneClass(global::DocumentIndexer.Program.MainModule.RunMultipleToFunctionClass f1, global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods5.InjectClass f2)
             {
                 this.f1 = f1;
                 this.f2 = f2;
             }
             [DIVEX.Core.InvokeIndexAttribute(0)]
             [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0, 0)]
+            [DIVEX.Core.InjectMapAttribute()]
             [DIVEX.Core.ParameterIndexAttribute(0)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::DocumentIndexer.Interfaces.IDocumentProcessor documentProcessor)
+            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Func<global::DocumentIndexer.Data.DataContext> createDataContext, global::System.Action[] runnables)
             {
-                return this.f1.Invoke(this.f2.Invoke(documentsSourcePath, fileSystem), documentProcessor);
-            }
-        
-        }
-        [DIVEX.Core.CtorOfClassAttribute(typeof(global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor))]
-        public sealed class AdapterForF1
-        {
-        
-            public static implicit operator DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods1.AdapterForF1(DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor> c)
-            {
-                return new AdapterForF1();
-            }
-            [DIVEX.Core.InvokeIndexAttribute(0)]
-            [DIVEX.Core.OriginalConstructorAttribute("DocumentIndexer.Interfaces.IDocumentsSource", "DocumentIndexer.Interfaces.IDocumentProcessor")]
-            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::DocumentIndexer.Interfaces.IDocumentsSource documentsSource, global::DocumentIndexer.Interfaces.IDocumentProcessor documentProcessor)
-            {
-                return new global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor(documentsSource, documentProcessor);
+                this.f1.Invoke(global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Concat(new global::System.Action [] {() => this.f2.Invoke(documentsSourcePath, fileSystem, createDataContext)}, runnables)));
             }
         
         }
@@ -89,48 +254,33 @@ namespace DocumentIndexer
 namespace DocumentIndexer
 {
     
-    public static class ReplaceWithNamedArgumentsExtensionMethods2
+    public static class InjectLastExtensionMethods1
     {
     
-        public static DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods2.ReplaceClass Replace(this global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods1.ReplaceClass f1, DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.IndexProcessor> documentProcessor)
+        public static DocumentIndexer.InjectLastExtensionMethods1.InjectLastClass InjectLast(this global::DocumentIndexer.InjectOneExtensionMethods1.InjectOneClass f1, global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods6.InjectClass runnables)
         {
-            return new ReplaceClass(f1, documentProcessor);
+            return new InjectLastClass(f1, runnables);
         }
-        [DIVEX.Core.ReplaceClassAttribute("f1", "f2", "documentProcessor")]
-        public sealed class ReplaceClass
+        [DIVEX.Core.InjectLastClassAttribute("f1", "f2")]
+        public sealed class InjectLastClass
         {
         
-            public readonly global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods1.ReplaceClass f1;
-            public readonly AdapterForF2 f2;
-            public ReplaceClass(global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods1.ReplaceClass f1, AdapterForF2 f2)
+            public readonly global::DocumentIndexer.InjectOneExtensionMethods1.InjectOneClass f1;
+            public readonly global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods6.InjectClass f2;
+            public InjectLastClass(global::DocumentIndexer.InjectOneExtensionMethods1.InjectOneClass f1, global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods6.InjectClass f2)
             {
                 this.f1 = f1;
                 this.f2 = f2;
             }
             [DIVEX.Core.InvokeIndexAttribute(0)]
             [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0, 0)]
-            [DIVEX.Core.ParameterIndexAttribute(2)]
+            [DIVEX.Core.InjectMapAttribute()]
+            [DIVEX.Core.ParameterIndexAttribute(3)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::DocumentIndexer.Interfaces.IWordsExtractor wordsExtractor, global::DocumentIndexer.Interfaces.IDocumentWithExtractedWordsStore documentWithExtractedWordsStore)
+            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Func<global::DocumentIndexer.Data.DataContext> createDataContext, [DIVEX.Core.ParameterNameAttribute("documentsSourcePath")]global::System.String documentsSourcePath1, [DIVEX.Core.ParameterNameAttribute("fileSystem")]global::System.IO.Abstractions.IFileSystem fileSystem1, global::System.String extractorServiceUrl, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.String outputFolderPath, [DIVEX.Core.ParameterNameAttribute("fileSystem")]global::System.IO.Abstractions.IFileSystem fileSystem2)
             {
-                return this.f1.Invoke(documentsSourcePath, fileSystem, this.f2.Invoke(wordsExtractor, documentWithExtractedWordsStore));
-            }
-        
-        }
-        [DIVEX.Core.CtorOfClassAttribute(typeof(global::DocumentIndexer.Implementations.IndexProcessor))]
-        public sealed class AdapterForF2
-        {
-        
-            public static implicit operator DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods2.AdapterForF2(DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.IndexProcessor> c)
-            {
-                return new AdapterForF2();
-            }
-            [DIVEX.Core.InvokeIndexAttribute(0)]
-            [DIVEX.Core.OriginalConstructorAttribute("DocumentIndexer.Interfaces.IWordsExtractor", "DocumentIndexer.Interfaces.IDocumentWithExtractedWordsStore")]
-            public global::DocumentIndexer.Implementations.IndexProcessor Invoke(global::DocumentIndexer.Interfaces.IWordsExtractor wordsExtractor, global::DocumentIndexer.Interfaces.IDocumentWithExtractedWordsStore documentWithExtractedWordsStore)
-            {
-                return new global::DocumentIndexer.Implementations.IndexProcessor(wordsExtractor, documentWithExtractedWordsStore);
+                this.f1.Invoke(documentsSourcePath, fileSystem, createDataContext, new global::System.Action[]{() => this.f2.Invoke(documentsSourcePath1, fileSystem1, extractorServiceUrl, post, outputFolderPath, fileSystem2)});
             }
         
         }
@@ -141,84 +291,33 @@ namespace DocumentIndexer
 namespace DocumentIndexer
 {
     
-    public static class ReplaceWithNamedArgumentsExtensionMethods3
+    public static class InjectWithNamedArgumentsExtensionMethods1
     {
     
-        public static DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods3.ReplaceClass Replace(this global::DocumentIndexer.Program.VarReturn.VR1 f1, DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.SimpleWordsExtractor> wordsExtractor)
+        public static DocumentIndexer.InjectWithNamedArgumentsExtensionMethods1.InjectClass Inject(this global::DocumentIndexer.Program.MainModule.GrabAndProcessorDocumentsToFunctionClass f1, global::DocumentIndexer.RenameExtensionMethods1.RenameClass getDocuments)
         {
-            return new ReplaceClass(f1, wordsExtractor);
+            return new InjectClass(f1, getDocuments);
         }
-        [DIVEX.Core.ReplaceClassAttribute("f1", "f2", "wordsExtractor")]
-        public sealed class ReplaceClass
+        [DIVEX.Core.InjectClassAttribute("f1", "f2")]
+        public sealed class InjectClass
         {
         
-            public readonly global::DocumentIndexer.Program.VarReturn.VR1 f1;
-            public readonly AdapterForF2 f2;
-            public ReplaceClass(global::DocumentIndexer.Program.VarReturn.VR1 f1, AdapterForF2 f2)
-            {
-                this.f1 = f1;
-                this.f2 = f2;
-            }
-            [DIVEX.Core.InvokeIndexAttribute(0)]
-            [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0, 0)]
-            [DIVEX.Core.ParameterIndexAttribute(2)]
-            [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
-            [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::DocumentIndexer.Interfaces.IDocumentWithExtractedWordsStore documentWithExtractedWordsStore)
-            {
-                return this.f1.Invoke(documentsSourcePath, fileSystem, this.f2.Invoke(), documentWithExtractedWordsStore);
-            }
-        
-        }
-        [DIVEX.Core.CtorOfClassAttribute(typeof(global::DocumentIndexer.Implementations.SimpleWordsExtractor))]
-        public sealed class AdapterForF2
-        {
-        
-            public static implicit operator DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods3.AdapterForF2(DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.SimpleWordsExtractor> c)
-            {
-                return new AdapterForF2();
-            }
-            [DIVEX.Core.InvokeIndexAttribute(0)]
-            [DIVEX.Core.OriginalConstructorAttribute()]
-            public global::DocumentIndexer.Implementations.SimpleWordsExtractor Invoke()
-            {
-                return new global::DocumentIndexer.Implementations.SimpleWordsExtractor();
-            }
-        
-        }
-    
-    }
-}
-
-namespace DocumentIndexer
-{
-    
-    public static class ReplaceWithNamedArgumentsExtensionMethods4
-    {
-    
-        public static DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods4.ReplaceClass Replace(this global::DocumentIndexer.Program.VarReturn.VR1 f1, global::DocumentIndexer.RenameExtensionMethods1.RenameClass wordsExtractor)
-        {
-            return new ReplaceClass(f1, wordsExtractor);
-        }
-        [DIVEX.Core.ReplaceClassAttribute("f1", "f2", "wordsExtractor")]
-        public sealed class ReplaceClass
-        {
-        
-            public readonly global::DocumentIndexer.Program.VarReturn.VR1 f1;
+            public readonly global::DocumentIndexer.Program.MainModule.GrabAndProcessorDocumentsToFunctionClass f1;
             public readonly global::DocumentIndexer.RenameExtensionMethods1.RenameClass f2;
-            public ReplaceClass(global::DocumentIndexer.Program.VarReturn.VR1 f1, global::DocumentIndexer.RenameExtensionMethods1.RenameClass f2)
+            public InjectClass(global::DocumentIndexer.Program.MainModule.GrabAndProcessorDocumentsToFunctionClass f1, global::DocumentIndexer.RenameExtensionMethods1.RenameClass f2)
             {
                 this.f1 = f1;
                 this.f2 = f2;
             }
             [DIVEX.Core.InvokeIndexAttribute(0)]
             [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0, 0)]
-            [DIVEX.Core.ParameterIndexAttribute(2)]
+            [DIVEX.Core.InjectMapAttribute()]
+            [DIVEX.Core.ParameterIndexAttribute(0)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.String extractorServiceUrl, global::DocumentIndexer.Interfaces.IRestClient restClient, global::DocumentIndexer.Interfaces.IDocumentWithExtractedWordsStore documentWithExtractedWordsStore)
+            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Action<global::DocumentIndexer.Interfaces.DTOs.InputDocument> processDocument)
             {
-                return this.f1.Invoke(documentsSourcePath, fileSystem, this.f2.Invoke(extractorServiceUrl, restClient), documentWithExtractedWordsStore);
+                this.f1.Invoke(() => this.f2.Invoke(documentsSourcePath, fileSystem), processDocument);
             }
         
         }
@@ -229,48 +328,33 @@ namespace DocumentIndexer
 namespace DocumentIndexer
 {
     
-    public static class ReplaceWithNamedArgumentsExtensionMethods5
+    public static class InjectWithNamedArgumentsExtensionMethods2
     {
     
-        public static DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods5.ReplaceClass Replace(this global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods3.ReplaceClass f1, DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore> documentWithExtractedWordsStore)
+        public static DocumentIndexer.InjectWithNamedArgumentsExtensionMethods2.InjectClass Inject(this global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods1.InjectClass f1, global::DocumentIndexer.Program.MainModule.IndexDocumentToFunctionClass processDocument)
         {
-            return new ReplaceClass(f1, documentWithExtractedWordsStore);
+            return new InjectClass(f1, processDocument);
         }
-        [DIVEX.Core.ReplaceClassAttribute("f1", "f2", "documentWithExtractedWordsStore")]
-        public sealed class ReplaceClass
+        [DIVEX.Core.InjectClassAttribute("f1", "f2")]
+        public sealed class InjectClass
         {
         
-            public readonly global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods3.ReplaceClass f1;
-            public readonly AdapterForF2 f2;
-            public ReplaceClass(global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods3.ReplaceClass f1, AdapterForF2 f2)
+            public readonly global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods1.InjectClass f1;
+            public readonly global::DocumentIndexer.Program.MainModule.IndexDocumentToFunctionClass f2;
+            public InjectClass(global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods1.InjectClass f1, global::DocumentIndexer.Program.MainModule.IndexDocumentToFunctionClass f2)
             {
                 this.f1 = f1;
                 this.f2 = f2;
             }
             [DIVEX.Core.InvokeIndexAttribute(0)]
             [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0, 0)]
+            [DIVEX.Core.InjectMapAttribute(2)]
             [DIVEX.Core.ParameterIndexAttribute(2)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory)
+            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::DocumentIndexer.Program.MainModule.IndexDocumentToFunctionClass.ParameterDelegate0n1 extractWords, global::System.Action<global::DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords> storeDocumentWithExtractedWords)
             {
-                return this.f1.Invoke(documentsSourcePath, fileSystem, this.f2.Invoke(dataContextFactory));
-            }
-        
-        }
-        [DIVEX.Core.CtorOfClassAttribute(typeof(global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore))]
-        public sealed class AdapterForF2
-        {
-        
-            public static implicit operator DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods5.AdapterForF2(DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore> c)
-            {
-                return new AdapterForF2();
-            }
-            [DIVEX.Core.InvokeIndexAttribute(0)]
-            [DIVEX.Core.OriginalConstructorAttribute("DocumentIndexer.Interfaces.IDataContextFactory")]
-            public global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore Invoke(global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory)
-            {
-                return new global::DocumentIndexer.Implementations.DocumentWithExtractedWordsStore(dataContextFactory);
+                this.f1.Invoke(documentsSourcePath, fileSystem, obj => this.f2.Invoke(extractWords, storeDocumentWithExtractedWords, obj));
             }
         
         }
@@ -281,48 +365,144 @@ namespace DocumentIndexer
 namespace DocumentIndexer
 {
     
-    public static class ReplaceWithNamedArgumentsExtensionMethods6
+    public static class InjectWithNamedArgumentsExtensionMethods3
     {
     
-        public static DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods6.ReplaceClass Replace(this global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods4.ReplaceClass f1, DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.FileSystemBasedDocumentWithExtractedWordsStore> documentWithExtractedWordsStore)
+        public static DocumentIndexer.InjectWithNamedArgumentsExtensionMethods3.InjectClass Inject(this global::DocumentIndexer.Program.VarReturn.VR1 f1, global::DocumentIndexer.Program.MainModule.GetWordsToFunctionClass extractWords)
         {
-            return new ReplaceClass(f1, documentWithExtractedWordsStore);
+            return new InjectClass(f1, extractWords);
         }
-        [DIVEX.Core.ReplaceClassAttribute("f1", "f2", "documentWithExtractedWordsStore")]
-        public sealed class ReplaceClass
+        [DIVEX.Core.InjectClassAttribute("f1", "f2")]
+        public sealed class InjectClass
         {
         
-            public readonly global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods4.ReplaceClass f1;
-            public readonly AdapterForF2 f2;
-            public ReplaceClass(global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods4.ReplaceClass f1, AdapterForF2 f2)
+            public readonly global::DocumentIndexer.Program.VarReturn.VR1 f1;
+            public readonly global::DocumentIndexer.Program.MainModule.GetWordsToFunctionClass f2;
+            public InjectClass(global::DocumentIndexer.Program.VarReturn.VR1 f1, global::DocumentIndexer.Program.MainModule.GetWordsToFunctionClass f2)
             {
                 this.f1 = f1;
                 this.f2 = f2;
             }
             [DIVEX.Core.InvokeIndexAttribute(0)]
             [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0, 0)]
+            [DIVEX.Core.InjectMapAttribute(0)]
+            [DIVEX.Core.ParameterIndexAttribute(2)]
+            [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
+            [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
+            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Action<global::DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords> storeDocumentWithExtractedWords)
+            {
+                this.f1.Invoke(documentsSourcePath, fileSystem, documentContent => this.f2.Invoke(documentContent), storeDocumentWithExtractedWords);
+            }
+        
+        }
+    
+    }
+}
+
+namespace DocumentIndexer
+{
+    
+    public static class InjectWithNamedArgumentsExtensionMethods4
+    {
+    
+        public static DocumentIndexer.InjectWithNamedArgumentsExtensionMethods4.InjectClass Inject(this global::DocumentIndexer.Program.VarReturn.VR1 f1, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass extractWords, Object documentContent_content)
+        {
+            return new InjectClass(f1, extractWords);
+        }
+        [DIVEX.Core.InjectClassAttribute("f1", "f2")]
+        public sealed class InjectClass
+        {
+        
+            public readonly global::DocumentIndexer.Program.VarReturn.VR1 f1;
+            public readonly global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass f2;
+            public InjectClass(global::DocumentIndexer.Program.VarReturn.VR1 f1, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass f2)
+            {
+                this.f1 = f1;
+                this.f2 = f2;
+            }
+            [DIVEX.Core.InvokeIndexAttribute(0)]
+            [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0, 0)]
+            [DIVEX.Core.InjectMapAttribute(2)]
+            [DIVEX.Core.ParameterIndexAttribute(2)]
+            [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
+            [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
+            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.String url, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.Action<global::DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords> storeDocumentWithExtractedWords)
+            {
+                this.f1.Invoke(documentsSourcePath, fileSystem, documentContent => this.f2.Invoke(url, post, documentContent), storeDocumentWithExtractedWords);
+            }
+        
+        }
+    
+    }
+}
+
+namespace DocumentIndexer
+{
+    
+    public static class InjectWithNamedArgumentsExtensionMethods5
+    {
+    
+        public static DocumentIndexer.InjectWithNamedArgumentsExtensionMethods5.InjectClass Inject(this global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods3.InjectClass f1, global::DocumentIndexer.Program.StorageModule.StoreToTheDatabaseToFunctionClass storeDocumentWithExtractedWords)
+        {
+            return new InjectClass(f1, storeDocumentWithExtractedWords);
+        }
+        [DIVEX.Core.InjectClassAttribute("f1", "f2")]
+        public sealed class InjectClass
+        {
+        
+            public readonly global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods3.InjectClass f1;
+            public readonly global::DocumentIndexer.Program.StorageModule.StoreToTheDatabaseToFunctionClass f2;
+            public InjectClass(global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods3.InjectClass f1, global::DocumentIndexer.Program.StorageModule.StoreToTheDatabaseToFunctionClass f2)
+            {
+                this.f1 = f1;
+                this.f2 = f2;
+            }
+            [DIVEX.Core.InvokeIndexAttribute(0)]
+            [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0, 0)]
+            [DIVEX.Core.InjectMapAttribute(1)]
+            [DIVEX.Core.ParameterIndexAttribute(2)]
+            [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
+            [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
+            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Func<global::DocumentIndexer.Data.DataContext> createDataContext)
+            {
+                this.f1.Invoke(documentsSourcePath, fileSystem, obj => this.f2.Invoke(createDataContext, obj));
+            }
+        
+        }
+    
+    }
+}
+
+namespace DocumentIndexer
+{
+    
+    public static class InjectWithNamedArgumentsExtensionMethods6
+    {
+    
+        public static DocumentIndexer.InjectWithNamedArgumentsExtensionMethods6.InjectClass Inject(this global::DocumentIndexer.RenameExtensionMethods2.RenameClass f1, global::DocumentIndexer.Program.StorageModule.StoreToTheFileSystemToFunctionClass storeDocumentWithExtractedWords)
+        {
+            return new InjectClass(f1, storeDocumentWithExtractedWords);
+        }
+        [DIVEX.Core.InjectClassAttribute("f1", "f2")]
+        public sealed class InjectClass
+        {
+        
+            public readonly global::DocumentIndexer.RenameExtensionMethods2.RenameClass f1;
+            public readonly global::DocumentIndexer.Program.StorageModule.StoreToTheFileSystemToFunctionClass f2;
+            public InjectClass(global::DocumentIndexer.RenameExtensionMethods2.RenameClass f1, global::DocumentIndexer.Program.StorageModule.StoreToTheFileSystemToFunctionClass f2)
+            {
+                this.f1 = f1;
+                this.f2 = f2;
+            }
+            [DIVEX.Core.InvokeIndexAttribute(0)]
+            [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0, 0)]
+            [DIVEX.Core.InjectMapAttribute(2)]
             [DIVEX.Core.ParameterIndexAttribute(4)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
             [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.String extractorServiceUrl, global::DocumentIndexer.Interfaces.IRestClient restClient, global::System.String outputFolderPath, [DIVEX.Core.ParameterNameAttribute("fileSystem")]global::System.IO.Abstractions.IFileSystem fileSystem1)
+            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.String extractorServiceUrl, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.String outputFolderPath, [DIVEX.Core.ParameterNameAttribute("fileSystem")]global::System.IO.Abstractions.IFileSystem fileSystem1)
             {
-                return this.f1.Invoke(documentsSourcePath, fileSystem, extractorServiceUrl, restClient, this.f2.Invoke(outputFolderPath, fileSystem1));
-            }
-        
-        }
-        [DIVEX.Core.CtorOfClassAttribute(typeof(global::DocumentIndexer.Implementations.FileSystemBasedDocumentWithExtractedWordsStore))]
-        public sealed class AdapterForF2
-        {
-        
-            public static implicit operator DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods6.AdapterForF2(DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.FileSystemBasedDocumentWithExtractedWordsStore> c)
-            {
-                return new AdapterForF2();
-            }
-            [DIVEX.Core.InvokeIndexAttribute(0)]
-            [DIVEX.Core.OriginalConstructorAttribute("System.String", "System.IO.Abstractions.IFileSystem")]
-            public global::DocumentIndexer.Implementations.FileSystemBasedDocumentWithExtractedWordsStore Invoke(global::System.String outputFolderPath, global::System.IO.Abstractions.IFileSystem fileSystem)
-            {
-                return new global::DocumentIndexer.Implementations.FileSystemBasedDocumentWithExtractedWordsStore(outputFolderPath, fileSystem);
+                this.f1.Invoke(documentsSourcePath, fileSystem, extractorServiceUrl, post, obj => this.f2.Invoke(outputFolderPath, fileSystem1, obj));
             }
         
         }
@@ -336,41 +516,25 @@ namespace DocumentIndexer
     public static class RenameExtensionMethods1
     {
     
-        public static DocumentIndexer.RenameExtensionMethods1.RenameClass Rename(this DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.RestBasedWordsExtractor> f1, Object url_extractorServiceUrl)
+        public static DocumentIndexer.RenameExtensionMethods1.RenameClass Rename(this global::DocumentIndexer.Program.StorageModule.GetDocumentsFromFileSystemToFunctionClass f1, Object path_documentsSourcePath)
         {
             return new RenameClass(f1);
         }
-        [DIVEX.Core.RenameClassAttribute("f1", "extractorServiceUrl")]
+        [DIVEX.Core.RenameClassAttribute("f1", "documentsSourcePath")]
         public sealed class RenameClass
         {
         
-            public readonly AdapterForF1 f1;
-            public RenameClass(AdapterForF1 f1)
+            public readonly global::DocumentIndexer.Program.StorageModule.GetDocumentsFromFileSystemToFunctionClass f1;
+            public RenameClass(global::DocumentIndexer.Program.StorageModule.GetDocumentsFromFileSystemToFunctionClass f1)
             {
                 this.f1 = f1;
             }
             [DIVEX.Core.InvokeIndexAttribute(0)]
             [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0)]
             [DIVEX.Core.ParameterIndexAttribute(0)]
-            public global::DocumentIndexer.Implementations.RestBasedWordsExtractor Invoke(global::System.String extractorServiceUrl, global::DocumentIndexer.Interfaces.IRestClient restClient)
+            public global::DocumentIndexer.Interfaces.DTOs.InputDocument[] Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem)
             {
-                return this.f1.Invoke(extractorServiceUrl, restClient);
-            }
-        
-        }
-        [DIVEX.Core.CtorOfClassAttribute(typeof(global::DocumentIndexer.Implementations.RestBasedWordsExtractor))]
-        public sealed class AdapterForF1
-        {
-        
-            public static implicit operator DocumentIndexer.RenameExtensionMethods1.AdapterForF1(DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.RestBasedWordsExtractor> c)
-            {
-                return new AdapterForF1();
-            }
-            [DIVEX.Core.InvokeIndexAttribute(0)]
-            [DIVEX.Core.OriginalConstructorAttribute("System.String", "DocumentIndexer.Interfaces.IRestClient")]
-            public global::DocumentIndexer.Implementations.RestBasedWordsExtractor Invoke(global::System.String url, global::DocumentIndexer.Interfaces.IRestClient restClient)
-            {
-                return new global::DocumentIndexer.Implementations.RestBasedWordsExtractor(url, restClient);
+                return this.f1.Invoke(documentsSourcePath, fileSystem);
             }
         
         }
@@ -384,167 +548,30 @@ namespace DocumentIndexer
     public static class RenameExtensionMethods2
     {
     
-        public static DocumentIndexer.RenameExtensionMethods2.RenameClass Rename(this DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.FileSystemDocumentsSource> f1, Object path_documentsSourcePath)
+        public static DocumentIndexer.RenameExtensionMethods2.RenameClass Rename(this global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods4.InjectClass f1, Object url_extractorServiceUrl)
         {
             return new RenameClass(f1);
         }
-        [DIVEX.Core.RenameClassAttribute("f1", "documentsSourcePath")]
+        [DIVEX.Core.RenameClassAttribute("f1", "extractorServiceUrl")]
         public sealed class RenameClass
         {
         
-            public readonly AdapterForF1 f1;
-            public RenameClass(AdapterForF1 f1)
+            public readonly global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods4.InjectClass f1;
+            public RenameClass(global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods4.InjectClass f1)
             {
                 this.f1 = f1;
             }
             [DIVEX.Core.InvokeIndexAttribute(0)]
             [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0)]
-            [DIVEX.Core.ParameterIndexAttribute(0)]
-            public global::DocumentIndexer.Implementations.FileSystemDocumentsSource Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem)
+            [DIVEX.Core.ParameterIndexAttribute(2)]
+            public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.String extractorServiceUrl, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.Action<global::DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords> storeDocumentWithExtractedWords)
             {
-                return this.f1.Invoke(documentsSourcePath, fileSystem);
-            }
-        
-        }
-        [DIVEX.Core.CtorOfClassAttribute(typeof(global::DocumentIndexer.Implementations.FileSystemDocumentsSource))]
-        public sealed class AdapterForF1
-        {
-        
-            public static implicit operator DocumentIndexer.RenameExtensionMethods2.AdapterForF1(DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.FileSystemDocumentsSource> c)
-            {
-                return new AdapterForF1();
-            }
-            [DIVEX.Core.InvokeIndexAttribute(0)]
-            [DIVEX.Core.OriginalConstructorAttribute("System.String", "System.IO.Abstractions.IFileSystem")]
-            public global::DocumentIndexer.Implementations.FileSystemDocumentsSource Invoke(global::System.String path, global::System.IO.Abstractions.IFileSystem fileSystem)
-            {
-                return new global::DocumentIndexer.Implementations.FileSystemDocumentsSource(path, fileSystem);
+                this.f1.Invoke(documentsSourcePath, fileSystem, extractorServiceUrl, post, storeDocumentWithExtractedWords);
             }
         
         }
     
     }
-}
-
-namespace DocumentIndexer
-{
-    
-    public static class ReplaceOneExtensionMethods1
-    {
-    
-        public static DocumentIndexer.ReplaceOneExtensionMethods1.ReplaceOneClass ReplaceOne(this DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.CompositeRunnable> f1, global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods5.ReplaceClass runnables)
-        {
-            return new ReplaceOneClass(f1, runnables);
-        }
-        [DIVEX.Core.ReplaceOneClassAttribute("f1", "f2", "runnables")]
-        public sealed class ReplaceOneClass
-        {
-        
-            public readonly AdapterForF1 f1;
-            public readonly global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods5.ReplaceClass f2;
-            public ReplaceOneClass(AdapterForF1 f1, global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods5.ReplaceClass f2)
-            {
-                this.f1 = f1;
-                this.f2 = f2;
-            }
-            [DIVEX.Core.InvokeIndexAttribute(0)]
-            [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0, 0)]
-            [DIVEX.Core.ParameterIndexAttribute(0)]
-            [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
-            [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, global::DocumentIndexer.Interfaces.IRunnable[] runnables)
-            {
-                return this.f1.Invoke(global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Concat(new global::DocumentIndexer.Interfaces.IRunnable [] {this.f2.Invoke(documentsSourcePath, fileSystem, dataContextFactory)}, runnables)));
-            }
-        
-        }
-        [DIVEX.Core.CtorOfClassAttribute(typeof(global::DocumentIndexer.Implementations.CompositeRunnable))]
-        public sealed class AdapterForF1
-        {
-        
-            public static implicit operator DocumentIndexer.ReplaceOneExtensionMethods1.AdapterForF1(DIVEX.Core.ConstructorOf<global::DocumentIndexer.Implementations.CompositeRunnable> c)
-            {
-                return new AdapterForF1();
-            }
-            [DIVEX.Core.InvokeIndexAttribute(0)]
-            [DIVEX.Core.OriginalConstructorAttribute("DocumentIndexer.Interfaces.IRunnable[]")]
-            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::DocumentIndexer.Interfaces.IRunnable[] runnables)
-            {
-                return new global::DocumentIndexer.Implementations.CompositeRunnable(runnables);
-            }
-        
-        }
-    
-    }
-}
-
-namespace DocumentIndexer
-{
-    
-    public static class ReplaceLastExtensionMethods1
-    {
-    
-        public static DocumentIndexer.ReplaceLastExtensionMethods1.ReplaceLastClass ReplaceLast(this global::DocumentIndexer.ReplaceOneExtensionMethods1.ReplaceOneClass f1, global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods6.ReplaceClass runnables)
-        {
-            return new ReplaceLastClass(f1, runnables);
-        }
-        [DIVEX.Core.ReplaceLastClassAttribute("f1", "f2", "runnables")]
-        public sealed class ReplaceLastClass
-        {
-        
-            public readonly global::DocumentIndexer.ReplaceOneExtensionMethods1.ReplaceOneClass f1;
-            public readonly global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods6.ReplaceClass f2;
-            public ReplaceLastClass(global::DocumentIndexer.ReplaceOneExtensionMethods1.ReplaceOneClass f1, global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods6.ReplaceClass f2)
-            {
-                this.f1 = f1;
-                this.f2 = f2;
-            }
-            [DIVEX.Core.InvokeIndexAttribute(0)]
-            [DIVEX.Core.IndexesOfUsedInvokablesAttribute(0, 0)]
-            [DIVEX.Core.ParameterIndexAttribute(3)]
-            [DIVEX.Core.TypeArgsForFunctionXAttribute(1)]
-            [DIVEX.Core.TypeArgsForFunctionXAttribute(2)]
-            public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, [DIVEX.Core.ParameterNameAttribute("documentsSourcePath")]global::System.String documentsSourcePath1, [DIVEX.Core.ParameterNameAttribute("fileSystem")]global::System.IO.Abstractions.IFileSystem fileSystem1, global::System.String extractorServiceUrl, global::DocumentIndexer.Interfaces.IRestClient restClient, global::System.String outputFolderPath, [DIVEX.Core.ParameterNameAttribute("fileSystem")]global::System.IO.Abstractions.IFileSystem fileSystem2)
-            {
-                return this.f1.Invoke(documentsSourcePath, fileSystem, dataContextFactory, new global::DocumentIndexer.Interfaces.IRunnable[]{this.f2.Invoke(documentsSourcePath1, fileSystem1, extractorServiceUrl, restClient, outputFolderPath, fileSystem2)});
-            }
-        
-        }
-    
-    }
-}
-
-namespace DocumentIndexer
-{
-    public  partial class Program
-    {
-        public sealed partial class VarReturn
-        {
-        
-            [DIVEX.Core.VarReturnClassAttribute()]
-            public sealed class VR1
-            {
-            
-                public static implicit operator DocumentIndexer.Program.VarReturn.VR1(global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods2.ReplaceClass cfc)
-                {
-                    return new DocumentIndexer.Program.VarReturn.VR1(cfc);
-                }
-                public readonly global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods2.ReplaceClass cfc;
-                public VR1(global::DocumentIndexer.ReplaceWithNamedArgumentsExtensionMethods2.ReplaceClass cfc)
-                {
-                    this.cfc = cfc;
-                }
-                [DIVEX.Core.InvokeIndexAttribute(0)]
-                public global::DocumentIndexer.Implementations.DocumentGrabberAndProcessor Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::DocumentIndexer.Interfaces.IWordsExtractor wordsExtractor, global::DocumentIndexer.Interfaces.IDocumentWithExtractedWordsStore documentWithExtractedWordsStore)
-                {
-                    return this.cfc.Invoke(documentsSourcePath, fileSystem, wordsExtractor, documentWithExtractedWordsStore);
-                }
-            
-            }
-        
-        }
-    }
-    
 }
 
 namespace DocumentIndexer
@@ -568,9 +595,42 @@ namespace DocumentIndexer
                     this.cfc = cfc;
                 }
                 [DIVEX.Core.InvokeIndexAttribute(0)]
-                public global::DocumentIndexer.Implementations.CompositeRunnable Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::DocumentIndexer.Interfaces.IDataContextFactory dataContextFactory, global::System.String extractorServiceUrl, global::DocumentIndexer.Interfaces.IRestClient restClient, global::System.String outputFolderPath)
+                public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::System.Func<global::DocumentIndexer.Data.DataContext> createDataContext, global::System.String extractorServiceUrl, global::DocumentIndexer.Program.RestModule.GetWordsUsingRestServiceToFunctionClass.ParameterDelegate0n2 post, global::System.String outputFolderPath)
                 {
-                    return this.cfc.Invoke(documentsSourcePath, fileSystem, dataContextFactory, extractorServiceUrl, restClient, outputFolderPath);
+                    this.cfc.Invoke(documentsSourcePath, fileSystem, createDataContext, extractorServiceUrl, post, outputFolderPath);
+                }
+            
+            }
+        
+        }
+    }
+    
+}
+
+namespace DocumentIndexer
+{
+    public  partial class Program
+    {
+        public sealed partial class VarReturn
+        {
+        
+            [DIVEX.Core.VarReturnClassAttribute()]
+            public sealed class VR1
+            {
+            
+                public static implicit operator DocumentIndexer.Program.VarReturn.VR1(global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods2.InjectClass cfc)
+                {
+                    return new DocumentIndexer.Program.VarReturn.VR1(cfc);
+                }
+                public readonly global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods2.InjectClass cfc;
+                public VR1(global::DocumentIndexer.InjectWithNamedArgumentsExtensionMethods2.InjectClass cfc)
+                {
+                    this.cfc = cfc;
+                }
+                [DIVEX.Core.InvokeIndexAttribute(0)]
+                public void Invoke(global::System.String documentsSourcePath, global::System.IO.Abstractions.IFileSystem fileSystem, global::DocumentIndexer.Program.MainModule.IndexDocumentToFunctionClass.ParameterDelegate0n1 extractWords, global::System.Action<global::DocumentIndexer.Interfaces.DTOs.InputDocumentWithExtractedWords> storeDocumentWithExtractedWords)
+                {
+                    this.cfc.Invoke(documentsSourcePath, fileSystem, extractWords, storeDocumentWithExtractedWords);
                 }
             
             }

@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DIVEX.Core;
 using DocumentIndexer.Configuration;
-using DocumentIndexer.Implementations;
-using DocumentIndexer.Interfaces;
-using static DIVEX.Core.DivexUtils;
+
 namespace DocumentIndexer
 {
     [DivexCompose]
@@ -20,54 +14,65 @@ namespace DocumentIndexer
         {
             var settings = ReadSettingsFromConfigurationFile();
 
-            var create4 = CreateApplication();
+            var runnable = CreateApplication();
 
-            var runnable =
-                create4.Invoke(
-                    documentsSourcePath: settings.FolderPath,
-                    dataContextFactory: new DataContextFactory(settings.ConnectionString),
-                    extractorServiceUrl: "http://localhost",
-                    outputFolderPath: settings.OutputFolderPath,
-                    fileSystem: new FileSystem(),
-                    restClient: new RestClient());
-
-            runnable.Run();
+            runnable.Invoke(
+                documentsSourcePath: settings.FolderPath,
+                createDataContext: () => Implementations.StorageModule.CreateDatabaseContext(settings.ConnectionString),
+                extractorServiceUrl: "http://localhost",
+                outputFolderPath: settings.OutputFolderPath,
+                fileSystem: new FileSystem(),
+                post: Implementations.RestModule.Post);
 
             Console.WriteLine("Done. Press any key to exit");
 
             Console.ReadKey();
         }
 
+        [DIVEX.Core.FunctionsClassAttribute(typeof(Implementations.RestModule))]
+        public static partial class RestModule
+        {
+        }
+        
         public static VarReturn.VR2 CreateApplication()
         {
-            var createDocumentGrabber = CreateDocumentGrabberAndProcessor();
+            var grabAndProcessDocuments = CreateDocumentGrabberAndProcessor();
 
             var create1 =
-                createDocumentGrabber
-                    .Replace(wordsExtractor: CtorOf<SimpleWordsExtractor>())
-                    .Replace(documentWithExtractedWordsStore: CtorOf<DocumentWithExtractedWordsStore>());
+                grabAndProcessDocuments
+                    .Inject(extractWords: MainModule.GetWords)
+                    .Inject(storeDocumentWithExtractedWords: StorageModule.StoreToTheDatabase);
 
             var create2 =
-                createDocumentGrabber
-                    .Replace(wordsExtractor: CtorOf<RestBasedWordsExtractor>()
-                        .Rename(url_extractorServiceUrl: 0))
-                    .Replace(documentWithExtractedWordsStore:
-                        CtorOf<FileSystemBasedDocumentWithExtractedWordsStore>());
+                grabAndProcessDocuments
+                    .Inject(extractWords: RestModule.GetWordsUsingRestService, documentContent_content:0)
+                    .Rename(url_extractorServiceUrl: 0)
+                    .Inject(storeDocumentWithExtractedWords: StorageModule.StoreToTheFileSystem);
 
-            var create3 = CtorOf<CompositeRunnable>()
-                .ReplaceOne(runnables: create1)
-                .ReplaceLast(runnables: create2);
+            var create3 = MainModule.RunMultiple
+                .InjectOne(runnables: create1)
+                .InjectLast(runnables: create2);
 
             return create3
                 .JoinAllInputs();
         }
 
+        [DIVEX.Core.FunctionsClassAttribute(typeof(Implementations.MainModule))]
+        public static partial class MainModule
+        {
+        }
+        
+        [DIVEX.Core.FunctionsClassAttribute(typeof(Implementations.StorageModule))]
+        public static partial class StorageModule
+        {
+        }
+        
         private static VarReturn.VR1 CreateDocumentGrabberAndProcessor()
         {
-            return CtorOf<DocumentGrabberAndProcessor>()
-                .Replace(documentsSource: CtorOf<FileSystemDocumentsSource>()
-                    .Rename(path_documentsSourcePath: 0))
-                .Replace(documentProcessor: CtorOf<IndexProcessor>());
+            return MainModule.GrabAndProcessorDocuments
+                    .Inject(getDocuments: StorageModule.GetDocumentsFromFileSystem
+                                                    .Rename(path_documentsSourcePath :0))
+                    .Inject(processDocument: MainModule.IndexDocument);
         }
 
         private static Settings ReadSettingsFromConfigurationFile()
