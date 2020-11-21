@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using DocumentIndexer.Interfaces;
+using Newtonsoft.Json;
 
 namespace DocumentIndexer.Implementations
 {
@@ -17,15 +18,9 @@ namespace DocumentIndexer.Implementations
 
         public string[] GetWords(string content)
         {
-            //TODO: create a REST client and call API to get the words from the content
-            //string actionUrl = url + "/GetWords";
+            var actionUrl = url + "/GetWords";
 
-            //var result = restClient.Post(actionUrl, "{Content = \"" + content + "\"}");
-
-            return content
-                .Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries)
-                .Distinct()
-                .ToArray();
+            return JsonConvert.DeserializeObject<string[]>(restClient.Post(actionUrl, content));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Data.Common;
+using System.Data.Entity;
 
 namespace DocumentIndexer.Data
 {
@@ -9,6 +10,12 @@ namespace DocumentIndexer.Data
 
         public DataContext(string connectionString)
             : base(connectionString)
+        {
+
+        }
+
+        public DataContext(DbConnection connection, bool contextOwnsConnection)
+            :base(connection, contextOwnsConnection)
         {
 
         }
