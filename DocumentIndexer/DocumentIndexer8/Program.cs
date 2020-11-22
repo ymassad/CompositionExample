@@ -33,7 +33,17 @@ namespace DocumentIndexer
         public static partial class RestModule
         {
         }
-        
+
+        [DIVEX.Core.FunctionsClassAttribute(typeof(Implementations.MainModule))]
+        public static partial class MainModule
+        {
+        }
+
+        [DIVEX.Core.FunctionsClassAttribute(typeof(Implementations.StorageModule))]
+        public static partial class StorageModule
+        {
+        }
+
         public static VarReturn.VR2 CreateApplication()
         {
             var grabAndProcessDocuments = CreateDocumentGrabberAndProcessor();
@@ -57,16 +67,6 @@ namespace DocumentIndexer
                 .JoinAllInputs();
         }
 
-        [DIVEX.Core.FunctionsClassAttribute(typeof(Implementations.MainModule))]
-        public static partial class MainModule
-        {
-        }
-        
-        [DIVEX.Core.FunctionsClassAttribute(typeof(Implementations.StorageModule))]
-        public static partial class StorageModule
-        {
-        }
-        
         private static VarReturn.VR1 CreateDocumentGrabberAndProcessor()
         {
             return MainModule.GrabAndProcessorDocuments
