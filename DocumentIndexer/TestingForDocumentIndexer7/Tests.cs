@@ -35,7 +35,7 @@ namespace TestingForDocumentIndexer7
                 var restClient = A.Fake<IRestClient>();
 
                 A.CallTo(() => restClient.Post(new Uri("https://fakeservice.com/GetWords"), A<string>.Ignored))
-                    .ReturnsLazily((string url, string body) =>
+                    .ReturnsLazily((Uri url, string body) =>
                     {
                         var fakeWords = body
                             .Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries)
