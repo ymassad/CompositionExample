@@ -49,12 +49,12 @@ namespace TestingForDocumentIndexer7
                 var fakeDataContextFactory = new FakeDataContextFactory(effortConnection);
 
                 var runnable = createSut.Invoke(
-                    "C:\\Documents",
-                    mockFileSystem,
-                    fakeDataContextFactory,
-                    new Uri("https://fakeservice.com"),
-                    restClient,
-                    "C:\\Output");
+                    documentsSourcePath: "C:\\Documents",
+                    fileSystem: mockFileSystem,
+                    dataContextFactory: fakeDataContextFactory,
+                    extractorServiceUrl: new Uri("https://fakeservice.com"),
+                    restClient: restClient,
+                    outputFolderPath: "C:\\Output");
                 
                 //Act
                 runnable.Run();
