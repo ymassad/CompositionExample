@@ -19,30 +19,30 @@ namespace DocumentIndexer
         {
             var settings = ReadSettingsFromConfigurationFile();
 
-            var createDocumentGrabber = CreateDocumentGrabberAndProcessor();
+            var createDocumentProcessor = CreateDocumentGrabberAndProcessor();
 
-            var create1 =
-                createDocumentGrabber
+            var createProcessor1 =
+                createDocumentProcessor
                     .Rename(documentsSourcePath_documentsSourcePathForProcessor1: 0)
                     .Replace(wordsExtractor: CtorOf<SimpleWordsExtractor>())
                     .Replace(documentWithExtractedWordsStore: CtorOf<DocumentWithExtractedWordsStore>());
 
-            var create2 =
-                createDocumentGrabber
+            var createProcessor2 =
+                createDocumentProcessor
                     .Rename(documentsSourcePath_documentsSourcePathForProcessor2: 0)
                     .Replace(wordsExtractor: CtorOf<RestBasedWordsExtractor>()
                                                  .Rename(url_extractorServiceUrl :0))
                     .Replace(documentWithExtractedWordsStore:
                         CtorOf<FileSystemBasedDocumentWithExtractedWordsStore>());
 
-            var create3 = CtorOf<CompositeRunnable>()
-                .ReplaceOne(runnables: create1)
-                .ReplaceLast(runnables: create2);
+            var createCompositeProcessor = CtorOf<CompositeRunnable>()
+                .ReplaceOne(runnables: createProcessor1)
+                .ReplaceLast(runnables: createProcessor2);
 
-            var create4 = create3.Optimize();
+            var createCompositeProcessorOptimized = createCompositeProcessor.Optimize();
 
             var runnable =
-                create4.Invoke(
+                createCompositeProcessorOptimized.Invoke(
                     documentsSourcePathForProcessor1:settings.FolderPath,
                     documentsSourcePathForProcessor2: settings.FolderPath2,
                     dataContextFactory: new DataContextFactory(settings.ConnectionString),

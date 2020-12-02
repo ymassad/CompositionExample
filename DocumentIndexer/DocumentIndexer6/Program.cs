@@ -20,29 +20,29 @@ namespace DocumentIndexer
         {
             var settings = ReadSettingsFromConfigurationFile();
 
-            var createDocumentGrabber = CreateDocumentGrabberAndProcessor();
+            var createDocumentProcessor = CreateDocumentGrabberAndProcessor();
 
-            var create1 =
-                createDocumentGrabber
+            var createProcessor1 =
+                createDocumentProcessor
                     .Replace(wordsExtractor: CtorOf<SimpleWordsExtractor>())
                     .Replace(documentWithExtractedWordsStore: CtorOf<DocumentWithExtractedWordsStore>());
 
-            var create2 =
-                createDocumentGrabber
+            var createProcessor2 =
+                createDocumentProcessor
                     .Replace(wordsExtractor: CtorOf<RestBasedWordsExtractor>()
                                                  .Rename(url_extractorServiceUrl: 0))
                     .Replace(documentWithExtractedWordsStore:
                         CtorOf<FileSystemBasedDocumentWithExtractedWordsStore>());
 
-            var create3 = CtorOf<CompositeRunnable>()
-                .ReplaceOne(runnables: create1)
-                .ReplaceLast(runnables: create2);
+            var createCompositeProcessor = CtorOf<CompositeRunnable>()
+                .ReplaceOne(runnables: createProcessor1)
+                .ReplaceLast(runnables: createProcessor2);
 
-            var create4 = create3
+            var createCompositeProcessorJoined = createCompositeProcessor
                 .JoinAllInputs();
 
             var runnable =
-                create4.Invoke(
+                createCompositeProcessorJoined.Invoke(
                     documentsSourcePath: settings.FolderPath,
                     dataContextFactory: new DataContextFactory(settings.ConnectionString),
                     extractorServiceUrl: new Uri("http://localhost"),

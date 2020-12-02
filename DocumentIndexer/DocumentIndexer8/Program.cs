@@ -48,22 +48,22 @@ namespace DocumentIndexer
         {
             var grabAndProcessDocuments = CreateDocumentGrabberAndProcessor();
 
-            var create1 =
+            var process1 =
                 grabAndProcessDocuments
                     .Inject(extractWords: MainModule.GetWords)
                     .Inject(storeDocumentWithExtractedWords: StorageModule.StoreToTheDatabase);
 
-            var create2 =
+            var process2 =
                 grabAndProcessDocuments
                     .Inject(extractWords: RestModule.GetWordsUsingRestService)
                     .Rename(url_extractorServiceUrl: 0)
                     .Inject(storeDocumentWithExtractedWords: StorageModule.StoreToTheFileSystem);
 
-            var create3 = MainModule.RunMultiple
-                .InjectOne(runnables: create1)
-                .InjectLast(runnables: create2);
+            var processMultiple = MainModule.RunMultiple
+                .InjectOne(runnables: process1)
+                .InjectLast(runnables: process2);
 
-            return create3
+            return processMultiple
                 .JoinAllInputs();
         }
 

@@ -20,10 +20,10 @@ namespace DocumentIndexer
         {
             var settings = ReadSettingsFromConfigurationFile();
 
-            var create4 = CreateApplication();
+            var createDocumentProcessorJoined = CreateApplication();
 
             var runnable =
-                create4.Invoke(
+                createDocumentProcessorJoined.Invoke(
                     documentsSourcePath: settings.FolderPath,
                     dataContextFactory: new DataContextFactory(settings.ConnectionString),
                     extractorServiceUrl: new Uri("http://localhost"),
@@ -40,25 +40,25 @@ namespace DocumentIndexer
 
         public static VarReturn.VR2 CreateApplication()
         {
-            var createDocumentGrabber = CreateDocumentGrabberAndProcessor();
+            var createDocumentProcessor = CreateDocumentGrabberAndProcessor();
 
-            var create1 =
-                createDocumentGrabber
+            var createProcessor1 =
+                createDocumentProcessor
                     .Replace(wordsExtractor: CtorOf<SimpleWordsExtractor>())
                     .Replace(documentWithExtractedWordsStore: CtorOf<DocumentWithExtractedWordsStore>());
 
-            var create2 =
-                createDocumentGrabber
+            var createProcessor2 =
+                createDocumentProcessor
                     .Replace(wordsExtractor: CtorOf<RestBasedWordsExtractor>()
                         .Rename(url_extractorServiceUrl: 0))
                     .Replace(documentWithExtractedWordsStore:
                         CtorOf<FileSystemBasedDocumentWithExtractedWordsStore>());
 
-            var create3 = CtorOf<CompositeRunnable>()
-                .ReplaceOne(runnables: create1)
-                .ReplaceLast(runnables: create2);
+            var createCompositeProcessor = CtorOf<CompositeRunnable>()
+                .ReplaceOne(runnables: createProcessor1)
+                .ReplaceLast(runnables: createProcessor2);
 
-            return create3
+            return createCompositeProcessor
                 .JoinAllInputs();
         }
 
