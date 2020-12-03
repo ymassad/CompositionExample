@@ -72,7 +72,7 @@
     <Compile Include="Interfaces\IRunnable.cs" />
     <Compile Include="Interfaces\IWordsExtractor.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Program.Mapping.cs">
+    <Compile Include="Program.Divex.cs">
       <DependentUpon>Program.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

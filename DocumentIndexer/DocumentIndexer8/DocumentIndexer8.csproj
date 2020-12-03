@@ -69,7 +69,7 @@
     <Compile Include="Interfaces\DTOs\InputDocumentWithExtractedWords.cs" />
     <Compile Include="Interfaces\DTOs\InputDocument.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Program.Mapping.cs">
+    <Compile Include="Program.Divex.cs">
       <DependentUpon>Program.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
