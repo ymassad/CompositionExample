@@ -29,20 +29,11 @@ namespace DocumentIndexer
             Console.ReadKey();
         }
 
-        [DIVEX.Core.FunctionsClassAttribute(typeof(Implementations.RestModule))]
-        public static partial class RestModule
-        {
-        }
+        [DIVEX.Core.FunctionsClassAttribute(typeof(Implementations.RestModule))] public static partial class RestModule { }
 
-        [DIVEX.Core.FunctionsClassAttribute(typeof(Implementations.MainModule))]
-        public static partial class MainModule
-        {
-        }
+        [DIVEX.Core.FunctionsClassAttribute(typeof(Implementations.MainModule))] public static partial class MainModule { }
 
-        [DIVEX.Core.FunctionsClassAttribute(typeof(Implementations.StorageModule))]
-        public static partial class StorageModule
-        {
-        }
+        [DIVEX.Core.FunctionsClassAttribute(typeof(Implementations.StorageModule))] public static partial class StorageModule { }
 
         public static VarReturn.VR2 CreateApplication()
         {
